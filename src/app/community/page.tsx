@@ -262,7 +262,11 @@ export default function CommunityPage() {
                 </div>
                 <h3 className="text-2xl font-bold mb-4">{item.title}</h3>
                 <p className="text-on-surface-variant mb-8 leading-relaxed flex-1">{item.desc}</p>
-                <Link href={item.link} className={`w-full block text-center py-4 bg-${item.color} text-white font-bold rounded-xl uppercase tracking-widest text-xs shadow-lg hover:brightness-110 transition-all`}>
+                <Link 
+                  href={item.link} 
+                  className="w-full block text-center py-4 text-white font-bold rounded-xl uppercase tracking-widest text-xs shadow-lg hover:brightness-110 transition-all"
+                  style={{ backgroundColor: `var(--color-${item.color})` }}
+                >
                   {item.action}
                 </Link>
               </div>
