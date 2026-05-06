@@ -76,7 +76,7 @@ export default function CommunityPage() {
             className="flex flex-wrap gap-4"
           >
             <button className="bg-primary text-white px-8 py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-primary-container transition-all shadow-xl">
-              Join the Committee
+              Join the Community
             </button>
           </motion.div>
         </div>
