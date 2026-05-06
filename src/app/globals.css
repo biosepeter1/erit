@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #a43700;
+  --color-secondary: #1b6d24;
+  --color-tertiary: #005ab7;
+  --color-background: #fbf9f8;
+  --color-surface: #ffffff;
+  --color-on-surface: #1b1c1c;
+  --color-on-surface-variant: #5a4138;
+  --color-outline: #8f7066;
+  --color-outline-variant: #e3bfb2;
+  
+  --color-surface-container-low: #f7f3f2;
+  --color-surface-container: #f1ebe9;
+  --color-surface-container-high: #ebe5e3;
+  --color-surface-container-highest: #e5dfdd;
+
+  --font-h1: "Public Sans", sans-serif;
+  --font-h2: "Public Sans", sans-serif;
+  --font-h3: "Public Sans", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-label: "Inter", sans-serif;
+}
+
+:root {
+  --primary: #a43700;
+  --secondary: #1b6d24;
+  --background: #fbf9f8;
+  --foreground: #1b1c1c;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-on-surface);
+  font-family: "Inter", sans-serif;
+}
+
+h1, h2, h3, h4 {
+  font-family: "Public Sans", sans-serif;
+  font-weight: 700;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.bg-pattern {
+  background-image: radial-gradient(#a4370010 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
