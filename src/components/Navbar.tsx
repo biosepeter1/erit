@@ -30,7 +30,7 @@ export default function Navbar() {
         <div className="flex items-center">
           <Link href="https://eriteam.org" target="_blank" rel="noopener noreferrer" className="font-h2 text-2xl font-bold text-primary flex items-center gap-3">
             <Image 
-              src="/pdf_images/WhatsApp_Image_2025-09-22_at_15.37.28_9f5ee964-removebg-preview.png" 
+              src="/pdf_images/page_1_img_4.jpeg" 
               alt="AbiaFIRST Logo" 
               width={40} 
               height={40} 

@@ -32,6 +32,7 @@ export default function ContactPage() {
             src="/pdf_images/page_1_img_1.jpeg" 
             alt="Abia State Secretariat" 
             fill
+            sizes="100vw"
             className="object-cover"
           />
           <div className="absolute inset-0 bg-secondary/80 backdrop-blur-sm z-10" />

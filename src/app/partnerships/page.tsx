@@ -12,7 +12,7 @@ export default function PartnershipsPage() {
       {/* Hero Section */}
       <section className="relative bg-[#fcfaf9]">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 min-h-[600px] items-center">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
@@ -25,7 +25,7 @@ export default function PartnershipsPage() {
               Partner with the Abia Education Revolution
             </h1>
             <p className="text-sm text-on-surface-variant mb-10 max-w-md leading-relaxed">
-              Joining forces with NGOs, Tech Innovators, and Global Investors to redefine the educational landscape of Abia State through scalable technology and systemic reform.
+              Joining forces with with, Tech Innovators, and Global Investors to redefine the educational landscape of Abia State through scalable technology and systemic reform.
             </p>
             <div className="flex flex-wrap gap-4">
               <button className="bg-[#a43700] text-white px-6 py-3 font-bold text-xs uppercase tracking-widest hover:brightness-110 transition-all rounded shadow-lg shadow-[#a43700]/30">
@@ -36,15 +36,15 @@ export default function PartnershipsPage() {
               </button>
             </div>
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="h-full w-full relative hidden lg:block"
           >
-            <Image 
-              src="/pdf_images/page_1_img_1.jpeg" 
+            <Image
+              src="/pdf_images/page_1_img_1.jpeg"
               alt="Educational Technology Partnership"
               fill
               className="object-cover"
@@ -56,7 +56,7 @@ export default function PartnershipsPage() {
       {/* The Transformation Story (Pillars) */}
       <section className="py-24 bg-[#fcfaf9]">
         <div className="max-w-7xl mx-auto px-6 text-center mb-16">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -64,11 +64,11 @@ export default function PartnershipsPage() {
           >
             The Transformation Story
           </motion.h2>
-          <motion.div 
+          <motion.div
             initial={{ width: 0 }}
             whileInView={{ width: 48 }}
             viewport={{ once: true }}
-            className="h-1 bg-[#c29858] mx-auto mb-6" 
+            className="h-1 bg-[#c29858] mx-auto mb-6"
           />
           <p className="text-on-surface-variant text-sm max-w-xl mx-auto leading-relaxed">
             Our holistic approach to systemic change is built upon five foundational pillars of institutional innovation.
@@ -80,7 +80,7 @@ export default function PartnershipsPage() {
               { title: "Teacher Professionalisation", desc: "Continuous upskilling programs designed to transition 7,000+ educators from traditional methods to 21st-century digital pedagogies.", icon: <Users size={20} />, borderColor: "border-[#8f4722]", iconBg: "bg-[#b75d32]" },
               { title: "Curriculum Modernisation", desc: "Integrating STEAM foundations and digital literacy into every level of basic and secondary education.", icon: <BookOpen size={20} />, borderColor: "border-[#bda67a]", iconBg: "bg-[#c29858]" }
             ].map((pillar, i) => (
-              <motion.div 
+              <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -104,7 +104,7 @@ export default function PartnershipsPage() {
               { title: "School Improvement", desc: "Physical and technological rehabilitation of public learning centers.", icon: <Construction size={18} />, borderColor: "border-[#bda67a]", iconBg: "bg-[#c29858]" },
               { title: "Community Engagement", desc: "Fostering ownership and accountability within local Abia communities.", icon: <Globe size={18} />, borderColor: "border-[#bda67a]", iconBg: "bg-[#c29858]" }
             ].map((pillar, i) => (
-              <motion.div 
+              <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -128,16 +128,16 @@ export default function PartnershipsPage() {
       {/* Stats Bar (Impact) */}
       <section className="relative py-32 bg-on-surface overflow-hidden">
         <div className="absolute inset-0">
-          <Image 
-            src="/pdf_images/page_2_img_1.jpeg" 
-            alt="Background" 
+          <Image
+            src="/pdf_images/page_2_img_1.jpeg"
+            alt="Background"
             fill
             className="object-cover opacity-60 filter blur-[2px]"
           />
           <div className="absolute inset-0 bg-black/40" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center text-white">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -151,7 +151,7 @@ export default function PartnershipsPage() {
               { val: "97.1%", label: "Skill Application" },
               { val: "41,163", label: "Digital Resources" }
             ].map((stat, i) => (
-              <motion.div 
+              <motion.div
                 key={i}
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}

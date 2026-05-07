@@ -38,6 +38,7 @@ export default function CommunityPage() {
               src={carouselImages[currentSlide].src}
               alt={carouselImages[currentSlide].alt}
               fill
+              sizes="100vw"
               className="object-cover"
               priority
             />
@@ -126,6 +127,7 @@ export default function CommunityPage() {
                 src="/pdf_images/page_6_img_1.jpeg"
                 alt="Regional Progress Map"
                 fill
+                sizes="(max-width: 768px) 100vw, 66vw"
                 className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
               />
             </div>
@@ -225,7 +227,7 @@ export default function CommunityPage() {
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12 items-center relative z-10">
                  <div className="lg:col-span-1">
                     <div className="w-full aspect-square rounded-[2rem] overflow-hidden border-4 border-white/20 shadow-lg relative">
-                       <Image src="/pdf_images/page_10_img_2.jpeg" fill className="object-cover" alt="Samuel Precious" />
+                        <Image src="/pdf_images/page_10_img_2.jpeg" fill sizes="(max-width: 768px) 100vw, 400px" className="object-cover" alt="Samuel Precious" />
                     </div>
                  </div>
                  <div className="lg:col-span-2">
