@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Users, TrendingUp, ShieldCheck, BookOpen, CheckCircle,
@@ -20,6 +20,26 @@ export default function Dashboard() {
   const [showEducationReport, setShowEducationReport] = useState(false);
   const [showMonitoringReport, setShowMonitoringReport] = useState(false);
   const [showPersonnelReport, setShowPersonnelReport] = useState(false);
+  const [visitedTabs, setVisitedTabs] = useState<string[]>([]);
+  const [viewMode, setViewMode] = useState<"summary" | "details">("summary");
+
+  // Automatically trigger report modals on first visit to a tab
+  useEffect(() => {
+    if (!visitedTabs.includes(activeTab)) {
+      setVisitedTabs(prev => [...prev, activeTab]);
+      setViewMode("summary");
+      
+      // Delay slightly for smooth transition
+      const timer = setTimeout(() => {
+        if (activeTab === "overview") setShowReport(true);
+        if (activeTab === "education") setShowEducationReport(true);
+        if (activeTab === "monitoring") setShowMonitoringReport(true);
+        if (activeTab === "personnel") setShowPersonnelReport(true);
+      }, 500);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [activeTab, visitedTabs]);
   const [isMatrixExpanded, setIsMatrixExpanded] = useState(false);
 
   const metrics = DASHBOARD_METRICS;
@@ -28,8 +48,8 @@ export default function Dashboard() {
     <button
       onClick={() => setActiveTab(id)}
       className={`flex items-center gap-2 px-4 md:px-6 py-2.5 rounded-xl font-bold whitespace-nowrap transition-all duration-300 ${activeTab === id
-          ? "bg-primary text-white shadow-lg shadow-primary/30 scale-105"
-          : "text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface"
+        ? "bg-primary text-white shadow-lg shadow-primary/30 scale-105"
+        : "text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface"
         }`}
       style={activeTab === id ? { backgroundColor: "#a43700" } : {}}
     >
@@ -79,7 +99,52 @@ export default function Dashboard() {
           {/* OVERVIEW TAB */}
           {activeTab === "overview" && (
             <div className="space-y-10">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {viewMode === "summary" ? (
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="bg-white border border-outline-variant rounded-[2.5rem] overflow-hidden shadow-xl"
+                >
+                  <div className="flex flex-col lg:flex-row min-h-[500px]">
+                    <div className="lg:w-1/2 relative h-[300px] lg:h-auto border-r border-outline-variant/30">
+                      <img src="/pdf_images/page_18_img_1.jpeg" className="absolute inset-0 w-full h-full object-cover" alt="AbiaFIRST Transformation" />
+                      <div className="absolute inset-0 bg-primary/10 mix-blend-multiply" />
+                      <div className="absolute bottom-10 left-10 text-white">
+                        <div className="text-[10px] font-black uppercase tracking-[0.3em] mb-2 opacity-80">Strategic Mission</div>
+                        <h2 className="text-4xl font-black leading-tight">Total Ecosystem <br/>Transformation</h2>
+                      </div>
+                    </div>
+                    <div className="lg:w-1/2 p-6 md:p-16 flex flex-col justify-center bg-surface-container-low">
+                      <div className="space-y-8">
+                        <div>
+                          <p className="text-on-surface-variant font-medium text-lg leading-relaxed mb-6">
+                            The AbiaFIRST program is fundamentally re-engineering the state's educational landscape through digital instructional support and rigorous field monitoring.
+                          </p>
+                        </div>
+                        <div className="grid grid-cols-3 gap-6">
+                          <div><div className="text-2xl font-black text-primary">7,454</div><div className="text-[9px] font-black uppercase tracking-widest text-on-surface-variant opacity-60">Educators</div></div>
+                          <div><div className="text-2xl font-black text-secondary">235</div><div className="text-[9px] font-black uppercase tracking-widest text-on-surface-variant opacity-60">Schools</div></div>
+                          <div><div className="text-2xl font-black text-on-surface">31.6k</div><div className="text-[9px] font-black uppercase tracking-widest text-on-surface-variant opacity-60">Students</div></div>
+                        </div>
+                        <div className="pt-8 flex flex-col sm:flex-row gap-4">
+                          <button onClick={() => setViewMode("details")} className="px-8 py-5 bg-[#a43700] text-white rounded-2xl font-black uppercase tracking-widest text-xs flex items-center justify-center gap-3 hover:scale-105 transition-all shadow-lg shadow-primary/20">
+                            Explore Detailed Metrics <ArrowRight size={18} />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ) : (
+                <div className="space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-700">
+                  <div className="flex justify-between items-center bg-surface-container-low p-4 rounded-2xl border border-outline-variant/30">
+                    <div className="flex items-center gap-3">
+                      <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                      <span className="text-xs font-black uppercase tracking-widest text-on-surface">Live Ecosystem Metrics</span>
+                    </div>
+                    <button onClick={() => setViewMode("summary")} className="text-[10px] font-black uppercase tracking-widest text-primary hover:underline">Back to Summary</button>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div className="bg-white rounded-xl p-6 shadow-sm border-t-4 border-secondary relative overflow-hidden group hover:shadow-md transition-shadow">
                   <div className="flex justify-between items-start mb-4">
                     <div className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant/60">Resources Ready</div>
@@ -129,7 +194,7 @@ export default function Dashboard() {
                     <MoreVertical className="text-on-surface-variant cursor-pointer" size={20} />
                   </div>
                   <div className="flex items-end justify-between h-64 gap-6 px-4">
-                    {metrics.education.terms.map((v, i) => (
+                    {metrics.education.terms.map((v: { label: string; value: number }, i: number) => (
                       <div key={i} className="flex-1 flex flex-col items-center gap-4 group">
                         <div className="w-full relative flex flex-col justify-end h-full">
                           {/* Hover Percentage */}
@@ -176,6 +241,182 @@ export default function Dashboard() {
                 </div>
               </div>
 
+              {/* Measurable Outcomes Section */}
+              <div className="mt-16 space-y-12">
+                <div className="flex flex-col md:flex-row justify-between items-end gap-6">
+                  <div>
+                    <h2 className="text-4xl font-black text-on-surface uppercase tracking-tight">Measurable Outcomes</h2>
+                    <p className="text-on-surface-variant font-medium mt-2 max-w-2xl">Strategic impact across the three primary missions of the AbiaFIRST Transformation Programme.</p>
+                  </div>
+                  <div className="flex gap-3">
+                    <span className="px-3 py-1 bg-primary/10 text-primary text-[10px] font-black uppercase tracking-widest rounded border border-primary/20">Mission 01</span>
+                    <span className="px-3 py-1 bg-secondary/10 text-secondary text-[10px] font-black uppercase tracking-widest rounded border border-secondary/20">Mission 02</span>
+                    <span className="px-3 py-1 bg-tertiary/10 text-tertiary text-[10px] font-black uppercase tracking-widest rounded border border-tertiary/20">Mission 03</span>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                  {/* Performance Graph */}
+                  <div className="lg:col-span-7 bg-white border border-outline-variant rounded-[2rem] p-8 md:p-10 shadow-sm relative overflow-hidden">
+                    <div className="flex justify-between items-start mb-12">
+                      <div>
+                        <h3 className="text-xl font-bold text-on-surface">Improvement Velocity</h3>
+                        <p className="text-xs font-bold text-on-surface-variant uppercase tracking-widest opacity-60">Program Performance Gains</p>
+                      </div>
+                      <TrendingUp className="text-primary" size={24} />
+                    </div>
+
+                    <div className="space-y-10">
+                      {[
+                        { label: "Teacher Competency", value: 21, color: "bg-primary", sub: "Mission 1: Professional Development" },
+                        { label: "Mastery Level Performance", value: 40.4, color: "bg-tertiary", sub: "Mission 3: School Performance" },
+                        { label: "Teacher-Learner Interactions", value: 69.8, color: "bg-secondary", sub: "Mission 3: Leadership" },
+                      ].map((bar: { label: string; value: number; color: string; sub: string }, i: number) => (
+                        <div key={i} className="space-y-3">
+                          <div className="flex justify-between items-end">
+                            <div>
+                              <div className="text-sm font-black text-on-surface">{bar.label}</div>
+                              <div className="text-[10px] font-bold text-on-surface-variant opacity-60">{bar.sub}</div>
+                            </div>
+                            <div className="text-2xl font-black text-on-surface">+{bar.value}%</div>
+                          </div>
+                          <div className="h-4 bg-surface-container-high rounded-full overflow-hidden p-1">
+                            <motion.div
+                              initial={{ width: 0 }}
+                              whileInView={{ width: `${bar.value}%` }}
+                              transition={{ duration: 1.5, delay: i * 0.2 }}
+                              className={`h-full rounded-full ${bar.color} shadow-sm`}
+                              style={bar.color === 'bg-primary' ? { backgroundColor: '#a43700' } : bar.color === 'bg-secondary' ? { backgroundColor: '#1b6d24' } : {}}
+                            />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Usage Chart */}
+                  <div className="lg:col-span-5 bg-on-surface text-white rounded-[2rem] p-10 flex flex-col justify-between relative overflow-hidden shadow-2xl border border-white/10">
+                    <div className="absolute -right-20 -top-20 w-64 h-64 bg-primary/20 rounded-full blur-[100px]" />
+
+                    <div>
+                      <h3 className="text-2xl font-black mb-2 uppercase tracking-tight">Mission 02</h3>
+                      <p className="text-white/60 font-medium">Digital Learning Adoption</p>
+                    </div>
+
+                    <div className="relative flex justify-center py-10">
+                      <svg className="w-48 h-48 transform -rotate-90">
+                        <circle cx="96" cy="96" r="88" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="16" />
+                        <motion.circle
+                          cx="96" cy="96" r="88" fill="none" stroke="#1b6d24" strokeWidth="16"
+                          strokeDasharray={2 * Math.PI * 88}
+                          initial={{ strokeDashoffset: 2 * Math.PI * 88 }}
+                          whileInView={{ strokeDashoffset: 2 * Math.PI * 88 * (1 - 0.70) }}
+                          transition={{ duration: 2 }}
+                          strokeLinecap="round"
+                        />
+                      </svg>
+                      <div className="absolute inset-0 flex flex-col items-center justify-center">
+                        <div className="text-5xl font-black">70%</div>
+                        <div className="text-[10px] font-black uppercase tracking-[0.2em] opacity-40">Active Usage</div>
+                      </div>
+                    </div>
+
+                    <div className="space-y-4">
+                      <div className="flex justify-between items-center p-4 bg-white/5 rounded-2xl border border-white/10">
+                        <div className="text-xs font-bold opacity-60 uppercase tracking-widest">Implementation Rate</div>
+                        <div className="text-xl font-black text-secondary">97.1%</div>
+                      </div>
+                      <div className="text-[10px] font-bold text-white/40 leading-relaxed text-center">
+                        Modern methods adopted across 41,163 curriculum assets.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Achievement Table */}
+                <div className="bg-white border border-outline-variant rounded-[2.5rem] overflow-hidden shadow-sm">
+                  <div className="p-8 border-b border-outline-variant bg-surface-container-low/30">
+                    <h3 className="text-2xl font-black text-on-surface">Key Achievement Matrix</h3>
+                    <p className="text-on-surface-variant font-medium mt-1">Consolidated metrics across all transformation pillars.</p>
+                  </div>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left">
+                      <thead className="bg-surface-container-low text-[10px] font-black uppercase tracking-widest text-on-surface-variant">
+                        <tr>
+                          <th className="px-8 py-5">Mission Pillar</th>
+                          <th className="px-8 py-5">Primary Outcome</th>
+                          <th className="px-8 py-5 text-center">Metric 01</th>
+                          <th className="px-8 py-5 text-center">Metric 02</th>
+                          <th className="px-8 py-5 text-right">Status</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-outline-variant/20">
+                        <tr className="group hover:bg-surface-container-low/30 transition-colors">
+                          <td className="px-8 py-6">
+                            <div className="font-black text-primary uppercase text-xs tracking-widest mb-1">Mission 01</div>
+                            <div className="text-sm font-bold text-on-surface">Teacher Quality & PD</div>
+                          </td>
+                          <td className="px-8 py-6 text-sm text-on-surface-variant font-medium max-w-xs">
+                            Improved teaching quality and enhanced classroom delivery.
+                          </td>
+                          <td className="px-8 py-6 text-center">
+                            <div className="text-lg font-black text-on-surface">7,454</div>
+                            <div className="text-[9px] font-bold uppercase opacity-40">Educators</div>
+                          </td>
+                          <td className="px-8 py-6 text-center">
+                            <div className="text-lg font-black text-on-surface">2,200</div>
+                            <div className="text-[9px] font-bold uppercase opacity-40">Trainers</div>
+                          </td>
+                          <td className="px-8 py-6 text-right">
+                            <span className="px-3 py-1 bg-green-100 text-green-700 text-[10px] font-black uppercase rounded">Achieved</span>
+                          </td>
+                        </tr>
+                        <tr className="group hover:bg-surface-container-low/30 transition-colors">
+                          <td className="px-8 py-6">
+                            <div className="font-black text-secondary uppercase text-xs tracking-widest mb-1">Mission 02</div>
+                            <div className="text-sm font-bold text-on-surface">Curriculum Modernization</div>
+                          </td>
+                          <td className="px-8 py-6 text-sm text-on-surface-variant font-medium max-w-xs">
+                            Modern methods adopted through digital resource integration.
+                          </td>
+                          <td className="px-8 py-6 text-center">
+                            <div className="text-lg font-black text-on-surface">41,163</div>
+                            <div className="text-[9px] font-bold uppercase opacity-40">Assets</div>
+                          </td>
+                          <td className="px-8 py-6 text-center">
+                            <div className="text-lg font-black text-on-surface">70%</div>
+                            <div className="text-[9px] font-bold uppercase opacity-40">Active Usage</div>
+                          </td>
+                          <td className="px-8 py-6 text-right">
+                            <span className="px-3 py-1 bg-blue-100 text-blue-700 text-[10px] font-black uppercase rounded">Scaling</span>
+                          </td>
+                        </tr>
+                        <tr className="group hover:bg-surface-container-low/30 transition-colors">
+                          <td className="px-8 py-6">
+                            <div className="font-black text-tertiary uppercase text-xs tracking-widest mb-1">Mission 03</div>
+                            <div className="text-sm font-bold text-on-surface">School Performance</div>
+                          </td>
+                          <td className="px-8 py-6 text-sm text-on-surface-variant font-medium max-w-xs">
+                            Strengthened management and enhanced accountability.
+                          </td>
+                          <td className="px-8 py-6 text-center">
+                            <div className="text-lg font-black text-on-surface">8</div>
+                            <div className="text-[9px] font-bold uppercase opacity-40">LGAs</div>
+                          </td>
+                          <td className="px-8 py-6 text-center">
+                            <div className="text-lg font-black text-on-surface">69.8%</div>
+                            <div className="text-[9px] font-bold uppercase opacity-40">Engagement</div>
+                          </td>
+                          <td className="px-8 py-6 text-right">
+                            <span className="px-3 py-1 bg-orange-100 text-orange-700 text-[10px] font-black uppercase rounded">Optimizing</span>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
               {/* Bottom Feature Card */}
               <div className="bg-white border border-outline-variant rounded-xl overflow-hidden shadow-sm flex flex-col md:flex-row group hover:shadow-md transition-shadow">
                 <div className="md:w-[40%] h-64 md:h-auto relative">
@@ -194,7 +435,7 @@ export default function Dashboard() {
                     State-wide Digital Literacy Certification Program Reaches Milestone
                   </h3>
                   <p className="text-on-surface-variant font-medium leading-relaxed mb-8 max-w-2xl">
-                    The ministry has successfully onboarded over 2,000 teachers in the first phase of the AbiaFIRST Digital Transformation initiative, exceeding initial quarterly projections by 15%.
+                    The ministry has successfully onboarded over 7,454 teachers in the current phase of the AbiaFIRST Digital Transformation initiative, covering 8 priority LGAs with high-fidelity instructional support.
                   </p>
                   <button
                     onClick={() => setShowReport(true)}
@@ -206,11 +447,49 @@ export default function Dashboard() {
               </div>
             </div>
           )}
+          </div>
+        )}
 
           {/* EDUCATION TAB */}
           {activeTab === "education" && (
-            <div className="space-y-8">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="space-y-10">
+              {viewMode === "summary" ? (
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="bg-white border border-outline-variant rounded-[2.5rem] overflow-hidden shadow-xl"
+                >
+                  <div className="flex flex-col lg:flex-row min-h-[500px]">
+                    <div className="lg:w-1/2 relative h-[300px] lg:h-auto border-r border-outline-variant/30">
+                      <img src="/pdf_images/page_10_img_2.jpeg" className="absolute inset-0 w-full h-full object-cover" alt="Curriculum Development" />
+                      <div className="absolute inset-0 bg-secondary/20 mix-blend-overlay" />
+                    </div>
+                    <div className="lg:w-1/2 p-10 md:p-16 flex flex-col justify-center bg-surface-container-low">
+                      <div>
+                        <div className="text-[10px] font-black uppercase tracking-[0.3em] mb-4 text-secondary">Academic Milestone</div>
+                        <h2 className="text-4xl font-black leading-tight text-on-surface mb-6">Digital Curriculum: <br/>The New Standard</h2>
+                        <p className="text-on-surface-variant font-medium text-lg leading-relaxed mb-10">Digitized the entire state curriculum, producing 28,062 instructional assets.</p>
+                        <div className="grid grid-cols-2 gap-8 mb-10">
+                          <div><div className="text-3xl font-black text-secondary">72%</div><div className="text-[10px] font-black uppercase tracking-widest opacity-60">Efficiency</div></div>
+                          <div><div className="text-3xl font-black text-on-surface">28,062</div><div className="text-[10px] font-black uppercase tracking-widest opacity-60">Assets</div></div>
+                        </div>
+                        <button onClick={() => setViewMode("details")} className="px-8 py-5 bg-[#1b6d24] text-white rounded-2xl font-black uppercase tracking-widest text-xs flex items-center justify-center gap-3 hover:scale-105 transition-all shadow-lg shadow-secondary/20">
+                          Explore Production Metrics <ArrowRight size={18} />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ) : (
+                <div className="space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-700">
+                  <div className="flex justify-between items-center bg-surface-container-low p-4 rounded-2xl border border-outline-variant/30">
+                    <div className="flex items-center gap-3">
+                      <div className="w-2 h-2 rounded-full bg-secondary animate-pulse" />
+                      <span className="text-xs font-black uppercase tracking-widest text-on-surface">Academic Level Analysis</span>
+                    </div>
+                    <button onClick={() => setViewMode("summary")} className="text-[10px] font-black uppercase tracking-widest text-secondary hover:underline">Back to Summary</button>
+                  </div>
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 {/* Resource Type Completion Table */}
                 <div className="glass-card border border-outline-variant rounded-3xl p-8 shadow-sm overflow-hidden">
                   <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
@@ -227,7 +506,7 @@ export default function Dashboard() {
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-outline-variant/20">
-                        {metrics.education.resourceTypes.map((item, i) => (
+                      {metrics.education.resourceTypes.map((item: { label: string; expected: number; completed: number; pct: number }, i: number) => (
                           <tr key={i} className="hover:bg-surface-container-low/50 transition-colors">
                             <td className="px-4 py-4 text-sm font-bold">{item.label}</td>
                             <td className="px-4 py-4 text-sm text-right font-medium">{item.expected?.toLocaleString()}</td>
@@ -264,7 +543,7 @@ export default function Dashboard() {
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-outline-variant/20">
-                        {metrics.education.levels.map((level, i) => (
+                        {metrics.education.levels.map((level: { label: string; expected: number; completed: number; pct: number; videoPct: number }, i: number) => (
                           <tr key={i} className="hover:bg-surface-container-low/50 transition-colors">
                             <td className="px-4 py-4 text-sm font-bold">{level.label}</td>
                             <td className="px-4 py-4 text-sm text-right font-medium">{level.expected?.toLocaleString()}</td>
@@ -298,7 +577,7 @@ export default function Dashboard() {
                       </tr>
                     </thead>
                     <tbody>
-                      {metrics.education.resourceTypes.map((res, i) => (
+                      {metrics.education.resourceTypes.map((res: { label: string; t1: number; t2: number; t3: number }, i: number) => (
                         <tr key={i} className="group">
                           <td className="px-8 py-6 font-bold text-base border-r border-white/5">{res.label}</td>
                           <td className="px-8 py-6 text-center bg-[#1b6d24]/5 border-r border-white/5">
@@ -356,7 +635,7 @@ export default function Dashboard() {
                         item.level.toLowerCase().includes(searchTerm.toLowerCase()) ||
                         item.type.toLowerCase().includes(searchTerm.toLowerCase()) ||
                         item.term.toLowerCase().includes(searchTerm.toLowerCase())
-                      ).map((item, i) => (
+                      ).map((item: { term: string; level: string; type: string; expected: number; completed: number; status: string; pct: number }, i: number) => (
                         <tr key={i} className="hover:bg-surface-container-low/30 transition-colors">
                           <td className="px-8 py-4 text-[10px] font-black uppercase text-on-surface-variant">{item.term}</td>
                           <td className="px-8 py-4 text-sm font-bold text-on-surface">{item.level}</td>
@@ -365,7 +644,7 @@ export default function Dashboard() {
                           <td className="px-8 py-4 text-sm text-center font-bold">{item.completed}</td>
                           <td className="px-8 py-4 text-right">
                             <span className={`px-3 py-1 rounded-full text-[10px] font-black uppercase ${item.pct === 100 ? 'bg-secondary/10 text-secondary' :
-                                item.pct > 0 ? 'bg-primary/10 text-primary' : 'bg-outline-variant/20 text-on-surface-variant/30'
+                              item.pct > 0 ? 'bg-primary/10 text-primary' : 'bg-outline-variant/20 text-on-surface-variant/30'
                               }`}>
                               {item.status}
                             </span>
@@ -384,6 +663,198 @@ export default function Dashboard() {
                   </button>
                 </div>
               </div>
+              {/* Visual Analysis Section - Moved here */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16 mt-16">
+                {/* Term Completion Chart */}
+                <div className="bg-[#a43700] rounded-[2.5rem] p-10 relative overflow-hidden shadow-xl">
+                  <div className="relative z-10">
+                    <h3 className="text-2xl font-black text-white uppercase tracking-tight mb-8">Output Completion by Term (%)</h3>
+                    <div className="flex items-end justify-between gap-4 h-48">
+                      {metrics.education.terms.map((term: any, i: number) => (
+                        <div key={i} className="flex-1 flex flex-col items-center gap-4 group">
+                          <div className="w-full relative flex flex-col justify-end h-full">
+                            <motion.div
+                              initial={{ height: 0 }}
+                              whileInView={{ height: `${term.value}%` }}
+                              transition={{ duration: 1, delay: i * 0.1 }}
+                              className={`w-full ${term.color} rounded-t-xl shadow-lg relative`}
+                            >
+                              <div className="absolute -top-8 left-1/2 -translate-x-1/2 text-sm font-black text-white">{term.value}%</div>
+                            </motion.div>
+                          </div>
+                          <div className="text-[10px] font-black text-white/60 uppercase tracking-widest">{term.label}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Resource Distribution Donut */}
+                <div className="bg-white border border-outline-variant rounded-[2.5rem] p-10 shadow-sm flex flex-col md:flex-row items-center gap-10">
+                  <div className="relative w-48 h-48 shrink-0">
+                    <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">
+                      <circle cx="50" cy="50" r="40" fill="transparent" stroke="#f1f5f9" strokeWidth="12" />
+                      {metrics.education.resourceTypes.map((type: any, i: number) => {
+                        const strokeDasharray = `${(type.pct * 251.2) / 100} 251.2`;
+                        let offset = 0;
+                        for (let j = 0; j < i; j++) {
+                          offset += (metrics.education.resourceTypes[j].pct * 251.2) / 100;
+                        }
+                        return (
+                          <motion.circle
+                            key={i}
+                            initial={{ strokeDashoffset: 251.2 }}
+                            whileInView={{ strokeDashoffset: -offset }}
+                            transition={{ duration: 1.5, ease: "easeOut" }}
+                            cx="50" cy="50" r="40"
+                            fill="transparent"
+                            stroke={i === 0 ? "#a43700" : i === 1 ? "#1b6d24" : i === 2 ? "#f29900" : i === 3 ? "#000000" : "#64748b"}
+                            strokeWidth="12"
+                            strokeDasharray="251.2"
+                            strokeLinecap="round"
+                          />
+                        );
+                      })}
+                    </svg>
+                    <div className="absolute inset-0 flex flex-col items-center justify-center">
+                      <div className="text-3xl font-black text-on-surface">72%</div>
+                      <div className="text-[8px] font-black uppercase text-on-surface-variant opacity-40">Overall</div>
+                    </div>
+                  </div>
+                  <div className="flex-1 space-y-4">
+                    <h3 className="text-xl font-black text-on-surface uppercase tracking-tight mb-4">Resource Status</h3>
+                    {metrics.education.resourceTypes.slice(0, 4).map((type: any, i: number) => (
+                      <div key={i} className="flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <div className={`w-2 h-2 rounded-full ${i === 0 ? "bg-[#a43700]" : i === 1 ? "bg-[#1b6d24]" : i === 2 ? "bg-[#f29900]" : "bg-black"}`} />
+                          <span className="text-xs font-bold text-on-surface-variant">{type.label}</span>
+                        </div>
+                        <span className="text-xs font-black text-on-surface">{type.pct}%</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+                {/* Video Completion by Level */}
+                <div className="bg-white border border-outline-variant rounded-[2.5rem] p-10 shadow-sm">
+                  <h3 className="text-xl font-black text-on-surface uppercase tracking-tight mb-8">Video Completion by Level (%)</h3>
+                  <div className="space-y-6">
+                    {metrics.education.levels.map((level: any, i: number) => (
+                      <div key={i} className="group">
+                        <div className="flex justify-between items-center mb-2">
+                          <span className="text-xs font-black text-on-surface-variant uppercase tracking-widest">{level.label}</span>
+                          <span className="text-xs font-black text-secondary">{level.videoPct}%</span>
+                        </div>
+                        <div className="h-2 bg-surface-container-low rounded-full overflow-hidden border border-outline-variant/10">
+                          <motion.div
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${level.videoPct}%` }}
+                            transition={{ duration: 1, delay: i * 0.1 }}
+                            className="h-full bg-secondary"
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Completion by Resource Type Horizontal */}
+                <div className="bg-on-surface rounded-[2.5rem] p-10 shadow-xl text-white">
+                  <h3 className="text-xl font-black uppercase tracking-tight mb-8">Completion by Resource Type (%)</h3>
+                  <div className="space-y-6">
+                    {metrics.education.resourceTypes.map((type: any, i: number) => (
+                      <div key={i}>
+                        <div className="flex justify-between items-center mb-2">
+                          <span className="text-[10px] font-black text-white/40 uppercase tracking-[0.2em]">{type.label}</span>
+                          <span className="text-sm font-black">{type.pct}%</span>
+                        </div>
+                        <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
+                          <motion.div
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${type.pct}%` }}
+                            transition={{ duration: 1, delay: i * 0.1 }}
+                            className="h-full bg-white"
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Resource Completion Trend Line Chart */}
+              <div className="bg-white border border-outline-variant rounded-[2.5rem] p-10 mb-16 shadow-sm overflow-hidden relative">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+                <div className="relative z-10">
+                  <h3 className="text-xl font-black uppercase tracking-tight mb-8">Resource Completion Trend (%)</h3>
+                  <div className="h-64 w-full relative">
+                    <svg className="w-full h-full overflow-visible" viewBox="0 0 1000 100">
+                      {/* Grid Lines */}
+                      {[0, 25, 50, 75, 100].map((val) => (
+                        <line key={val} x1="0" y1={100 - val} x2="1000" y2={100 - val} stroke="#e2e8f0" strokeWidth="0.5" />
+                      ))}
+                      {/* Trend Line */}
+                      <motion.path
+                        d="M 0 4 L 333 8 L 666 78 L 1000 78"
+                        fill="none"
+                        stroke="#a43700"
+                        strokeWidth="4"
+                        strokeLinecap="round"
+                        initial={{ pathLength: 0 }}
+                        whileInView={{ pathLength: 1 }}
+                        transition={{ duration: 2, ease: "easeInOut" }}
+                      />
+                      {/* Points */}
+                      <circle cx="0" cy="4" r="6" fill="#a43700" stroke="white" strokeWidth="2" />
+                      <circle cx="333" cy="8" r="6" fill="#a43700" stroke="white" strokeWidth="2" />
+                      <circle cx="666" cy="78" r="6" fill="#a43700" stroke="white" strokeWidth="2" />
+                    </svg>
+                    <div className="flex justify-between mt-6 px-2">
+                      <div className="text-[10px] font-black uppercase text-on-surface-variant">Term 1 (96%)</div>
+                      <div className="text-[10px] font-black uppercase text-on-surface-variant">Term 2 (92%)</div>
+                      <div className="text-[10px] font-black uppercase text-on-surface-variant">Term 3 (22%)</div>
+                      <div className="text-[10px] font-black uppercase text-on-surface-variant">Projected (22%)</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* LGA Asset & School Matrix */}
+              <div className="bg-white border border-outline-variant rounded-3xl shadow-sm overflow-hidden mb-16">
+                <div className="p-6 border-b border-outline-variant bg-surface-container-low/50">
+                  <h3 className="text-xl font-bold">LGA Asset & School Matrix</h3>
+                </div>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left border-collapse">
+                    <thead className="bg-surface-container-low text-[10px] font-black uppercase tracking-wider text-on-surface-variant">
+                      <tr>
+                        <th className="px-6 py-4 border-b border-outline-variant">LGA / Zone</th>
+                        <th className="px-6 py-4 border-b border-outline-variant text-center">Total Assets</th>
+                        <th className="px-6 py-4 border-b border-outline-variant text-center">Schools Visited</th>
+                        <th className="px-6 py-4 border-b border-outline-variant text-center">Video Completed</th>
+                        <th className="px-6 py-4 border-b border-outline-variant text-center">Status</th>
+                        <th className="px-6 py-4 border-b border-outline-variant text-right">Completion %</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-outline-variant/20">
+                      {metrics.monitoring.lgaReach.map((lga: any, i: number) => (
+                        <tr key={i} className="hover:bg-surface-container-low/30 transition-colors">
+                          <td className="px-6 py-4 text-sm font-bold">{lga.name}</td>
+                          <td className="px-6 py-4 text-sm text-center font-medium">5,145</td>
+                          <td className="px-6 py-4 text-sm text-center font-medium">{lga.count}</td>
+                          <td className="px-6 py-4 text-sm text-center font-medium text-secondary">24</td>
+                          <td className="px-6 py-4 text-center">
+                            <span className="px-2 py-1 bg-green-100 text-green-700 rounded text-[10px] font-black uppercase">Active</span>
+                          </td>
+                          <td className="px-6 py-4 text-sm text-right font-black text-primary">72%</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
 
               {/* Education Milestone Feature Card */}
               <div className="bg-white border border-outline-variant rounded-xl overflow-hidden shadow-sm flex flex-col md:flex-row group hover:shadow-md transition-shadow mt-10">
@@ -394,7 +865,7 @@ export default function Dashboard() {
                     alt="Curriculum Development"
                   />
                 </div>
-                <div className="p-10 flex flex-col justify-center flex-1">
+                <div className="p-6 md:p-10 flex flex-col justify-center flex-1">
                   <div className="flex items-center gap-3 mb-4">
                     <span className="px-2 py-0.5 bg-blue-100 text-blue-700 text-[10px] font-black uppercase tracking-widest rounded">Academic Progress</span>
                     <span className="text-[10px] font-bold text-on-surface-variant/40 uppercase tracking-widest">• Updated Today</span>
@@ -415,12 +886,50 @@ export default function Dashboard() {
               </div>
             </div>
           )}
+          </div>
+        )}
 
           {/* MONITORING TAB */}
           {activeTab === "monitoring" && (
-            <div className="space-y-8">
-              {/* Monitoring KPIs */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="space-y-10">
+              {viewMode === "summary" ? (
+                <motion.div 
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  className="bg-white border border-outline-variant rounded-[2.5rem] overflow-hidden shadow-xl"
+                >
+                  <div className="flex flex-col lg:flex-row min-h-[500px]">
+                    <div className="lg:w-1/2 relative h-[300px] lg:h-auto border-r border-outline-variant/30">
+                      <img src="/pdf_images/page_2_img_1.jpeg" className="absolute inset-0 w-full h-full object-cover" alt="Field Monitoring" />
+                      <div className="absolute inset-0 bg-primary/20 mix-blend-multiply" />
+                    </div>
+                    <div className="lg:w-1/2 p-6 md:p-16 flex flex-col justify-center bg-surface-container-low">
+                      <div>
+                        <div className="text-[10px] font-black uppercase tracking-[0.3em] mb-4 text-primary">Field Intelligence</div>
+                        <h2 className="text-4xl font-black leading-tight text-on-surface mb-6">Rigorous Field <br/>Verification</h2>
+                        <p className="text-on-surface-variant font-medium text-lg leading-relaxed mb-10">Deploying field teams across 8 LGAs to verify digital adoption and instructional quality.</p>
+                        <div className="grid grid-cols-3 gap-6 mb-10">
+                          <div><div className="text-2xl font-black text-primary">112</div><div className="text-[9px] font-black uppercase tracking-widest opacity-60">Visits</div></div>
+                          <div><div className="text-2xl font-black text-secondary">90.3%</div><div className="text-[9px] font-black uppercase tracking-widest opacity-60">Attendance</div></div>
+                          <div><div className="text-2xl font-black text-on-surface">8</div><div className="text-[9px] font-black uppercase tracking-widest opacity-60">LGAs</div></div>
+                        </div>
+                        <button onClick={() => setViewMode("details")} className="px-8 py-5 bg-[#a43700] text-white rounded-2xl font-black uppercase tracking-widest text-xs flex items-center justify-center gap-3 hover:scale-105 transition-all shadow-lg shadow-primary/20">
+                          Explore Field Data <ArrowRight size={18} />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ) : (
+                <div className="space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-700">
+                  <div className="flex justify-between items-center bg-surface-container-low p-4 rounded-2xl border border-outline-variant/30">
+                    <div className="flex items-center gap-3">
+                      <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                      <span className="text-xs font-black uppercase tracking-widest text-on-surface">Field Operations Dashboard</span>
+                    </div>
+                    <button onClick={() => setViewMode("summary")} className="text-[10px] font-black uppercase tracking-widest text-primary hover:underline">Back to Summary</button>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div className="bg-white border border-outline-variant rounded-2xl p-6 shadow-sm">
                   <div className="text-xs font-black uppercase tracking-widest text-on-surface-variant mb-2">Joint Visits</div>
                   <div className="text-4xl font-black text-primary">{metrics.monitoring.visitBreakdown.joint}</div>
@@ -462,7 +971,7 @@ export default function Dashboard() {
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-outline-variant/20">
-                      {metrics.monitoring.monthlyTrends.map((trend, i) => (
+                      {metrics.monitoring.monthlyTrends.map((trend: { month: string; visits: number; joint: number; validation: number; sip: number; teachers: number; students: number }, i: number) => (
                         <tr key={i} className="hover:bg-surface-container-low/50 transition-colors">
                           <td className="px-4 py-4 text-sm font-bold">{trend.month}</td>
                           <td className="px-4 py-4 text-sm text-center font-black text-primary">{trend.visits}</td>
@@ -483,7 +992,7 @@ export default function Dashboard() {
                 <div className="lg:col-span-1 glass-card border border-outline-variant rounded-3xl p-8 shadow-sm">
                   <h3 className="text-lg font-bold mb-6">LGA Visit Distribution</h3>
                   <div className="space-y-4">
-                    {metrics.monitoring.lgaReach.map((lga, i) => (
+                    {metrics.monitoring.lgaReach.map((lga: { name: string; count: number }, i: number) => (
                       <div key={i} className="flex items-center justify-between">
                         <span className="text-sm font-medium">{lga.name}</span>
                         <div className="flex items-center gap-3 flex-1 px-4">
@@ -551,12 +1060,49 @@ export default function Dashboard() {
               </div>
             </div>
           )}
+          </div>
+        )}
 
           {/* PERSONNEL TAB */}
           {activeTab === "personnel" && (
-            <div className="space-y-8">
-              {/* Personnel Summary Stats */}
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div className="space-y-10">
+              {viewMode === "summary" ? (
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="bg-white border border-outline-variant rounded-[2.5rem] overflow-hidden shadow-xl"
+                >
+                  <div className="flex flex-col lg:flex-row min-h-[500px]">
+                    <div className="lg:w-1/2 relative h-[300px] lg:h-auto border-r border-outline-variant/30">
+                      <img src="/pdf_images/page_10_img_2.jpeg" className="absolute inset-0 w-full h-full object-cover" alt="Personnel Development" />
+                      <div className="absolute inset-0 bg-secondary/10 mix-blend-multiply" />
+                    </div>
+                    <div className="lg:w-1/2 p-6 md:p-16 flex flex-col justify-center bg-surface-container-low">
+                      <div>
+                        <div className="text-[10px] font-black uppercase tracking-[0.3em] mb-4 text-secondary">Human Capital</div>
+                        <h2 className="text-4xl font-black leading-tight text-on-surface mb-6">World-Class Trainer <br/>Network</h2>
+                        <p className="text-on-surface-variant font-medium text-lg leading-relaxed mb-10">Empowering 7,454 educators with digital tools and international-standard pedagogical training.</p>
+                        <div className="grid grid-cols-2 gap-8 mb-10">
+                          <div><div className="text-3xl font-black text-secondary">7,454</div><div className="text-[10px] font-black uppercase tracking-widest opacity-60">Certified</div></div>
+                          <div><div className="text-3xl font-black text-on-surface">2,200</div><div className="text-[10px] font-black uppercase tracking-widest opacity-60">Trainers</div></div>
+                        </div>
+                        <button onClick={() => setViewMode("details")} className="px-8 py-5 bg-[#1b6d24] text-white rounded-2xl font-black uppercase tracking-widest text-xs flex items-center justify-center gap-3 hover:scale-105 transition-all shadow-lg shadow-secondary/20">
+                          View Personnel Directory <ArrowRight size={18} />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ) : (
+                <div className="space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-700">
+                  <div className="flex justify-between items-center bg-surface-container-low p-4 rounded-2xl border border-outline-variant/30">
+                    <div className="flex items-center gap-3">
+                      <div className="w-2 h-2 rounded-full bg-secondary animate-pulse" />
+                      <span className="text-xs font-black uppercase tracking-widest text-on-surface">Certified Personnel Database</span>
+                    </div>
+                    <button onClick={() => setViewMode("summary")} className="text-[10px] font-black uppercase tracking-widest text-secondary hover:underline">Back to Summary</button>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                 <div className="bg-on-surface text-white p-6 rounded-2xl shadow-lg border-4 border-white">
                   <div className="text-4xl font-black">{metrics.personnel.stats.total.toLocaleString()}</div>
                   <div className="text-[10px] font-black uppercase tracking-widest opacity-60">Total Trainers</div>
@@ -593,7 +1139,7 @@ export default function Dashboard() {
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-outline-variant/20">
-                        {(metrics.personnel as any).levelBreakdown.map((row: any, i: number) => (
+                        {(metrics.personnel.levelBreakdown as { label: string; lmt: number; mt: number; total: number }[]).map((row, i) => (
                           <tr key={i} className="hover:bg-surface-container-low/50 transition-colors">
                             <td className="px-4 py-4 text-sm font-bold">{row.label}</td>
                             <td className="px-4 py-4 text-sm text-center font-medium">{row.lmt}</td>
@@ -622,7 +1168,7 @@ export default function Dashboard() {
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-outline-variant/20">
-                        {(metrics.personnel as any).lgaBreakdown.map((row: any, i: number) => (
+                        {(metrics.personnel.lgaBreakdown as { name: string; lmt: number; mt: number; total: number }[]).map((row, i) => (
                           <tr key={i} className="hover:bg-surface-container-low/50 transition-colors">
                             <td className="px-4 py-4 text-sm font-bold">{row.name}</td>
                             <td className="px-4 py-4 text-sm text-center font-medium">{row.lmt}</td>
@@ -635,6 +1181,54 @@ export default function Dashboard() {
                   </div>
                 </div>
               </div>
+
+              {/* Trend: Trainers by LGA Chart */}
+              <div className="bg-[#f29900] rounded-[2.5rem] p-6 md:p-16 relative overflow-hidden shadow-2xl border-4 border-white">
+                <div className="absolute top-0 right-0 w-full h-full bg-pattern opacity-5" />
+                <div className="relative z-10">
+                  <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-16">
+                    <div>
+                      <h3 className="text-4xl font-black text-on-surface uppercase tracking-tight leading-none">Trend: Trainers by LGA</h3>
+                      <p className="text-on-surface/60 font-bold mt-2">Geographic distribution of educational personnel across 16 LGAs.</p>
+                    </div>
+                    <div className="flex items-center gap-2 px-4 py-2 bg-on-surface/10 rounded-full border border-on-surface/10">
+                      <div className="w-3 h-3 rounded bg-on-surface shadow-sm" />
+                      <span className="text-[10px] font-black uppercase text-on-surface">Personnel Count</span>
+                    </div>
+                  </div>
+
+                  <div className="grid gap-6">
+                    {(metrics.personnel.lgaBreakdown as { name: string; total: number }[]).map((lga, i) => (
+                      <div key={i} className="group flex items-center gap-4 md:gap-6">
+                        <div className="w-24 md:w-48 shrink-0">
+                          <div className="text-xs font-black text-on-surface/60 uppercase tracking-widest truncate group-hover:text-on-surface transition-colors">{lga.name}</div>
+                        </div>
+                        <div className="flex-1 h-3 bg-on-surface/5 rounded-full overflow-hidden relative border border-on-surface/5">
+                          <motion.div
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${(lga.total / 160) * 100}%` }}
+                            transition={{ duration: 1, delay: i * 0.05 }}
+                            className="h-full bg-on-surface shadow-lg shadow-black/5"
+                          />
+                        </div>
+                        <div className="w-12 text-right">
+                          <span className="text-sm font-black text-on-surface">{lga.total}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-16 pt-8 border-t border-on-surface/10 flex justify-between items-center text-[10px] font-black uppercase text-on-surface/30 tracking-[0.3em]">
+                    <span>Scale: 0 - 160 Personnel</span>
+                    <div className="flex gap-4">
+                      <span>Abia State Education Transformation</span>
+                      <span>•</span>
+                      <span>verified data</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
 
               <div className="bg-white border border-outline-variant rounded-3xl shadow-sm overflow-hidden">
                 <div className="p-6 border-b border-outline-variant flex flex-col md:flex-row justify-between items-center gap-4 bg-surface-container-low/50">
@@ -669,7 +1263,7 @@ export default function Dashboard() {
                           (p as any).zone?.toLowerCase().includes(searchTerm.toLowerCase()) ||
                           (p as any).lga?.toLowerCase().includes(searchTerm.toLowerCase())
                         )
-                        .map((person, i) => (
+                        .map((person: { name: string; level: string; type?: string; zone?: string; lga?: string; organization?: string; school?: string }, i: number) => (
                           <tr key={i} className="hover:bg-surface-container-low/50 transition-colors group">
                             <td className="px-8 py-4 font-bold text-on-surface">{person.name}</td>
                             <td className="px-8 py-4">
@@ -686,7 +1280,7 @@ export default function Dashboard() {
                   </table>
                 </div>
                 <div className="p-6 bg-surface-container-low/30 border-t border-outline-variant text-center">
-                  <p className="text-xs font-bold text-on-surface-variant italic">Showing top results from a database of 2,126 verified educational personnel.</p>
+                  <p className="text-xs font-bold text-on-surface-variant italic">Showing top results from a database of 7,454 verified educational personnel.</p>
                 </div>
               </div>
 
@@ -699,16 +1293,16 @@ export default function Dashboard() {
                     alt="Trainer Development"
                   />
                 </div>
-                <div className="p-10 flex flex-col justify-center flex-1">
+                <div className="p-6 md:p-10 flex flex-col justify-center flex-1">
                   <div className="flex items-center gap-3 mb-4">
                     <span className="px-2 py-0.5 bg-green-100 text-green-700 text-[10px] font-black uppercase tracking-widest rounded">Human Capital</span>
                     <span className="text-[10px] font-bold text-on-surface-variant/40 uppercase tracking-widest">• Certified Trainers</span>
                   </div>
                   <h3 className="text-3xl font-black text-on-surface leading-tight mb-4">
-                    Scaling Global Expertise: 2,126 Trainers Fully Certified
+                    Scaling Global Expertise: 7,454 Educators Fully Certified
                   </h3>
                   <p className="text-on-surface-variant font-medium leading-relaxed mb-8 max-w-2xl">
-                    Our state-wide trainer network has achieved full certification, with 199 Lead Master Trainers now overseeing digital adoption across all 24 educational zones.
+                    Our state-wide trainer network has achieved full certification, with 200 Lead Master Trainers and 2,000 Master Trainers now overseeing digital adoption across the 8 piloted LGAs.
                   </p>
                   <button
                     onClick={() => setShowPersonnelReport(true)}
@@ -720,6 +1314,8 @@ export default function Dashboard() {
               </div>
             </div>
           )}
+          </div>
+        )}
         </motion.div>
       </AnimatePresence>
 
@@ -741,47 +1337,47 @@ export default function Dashboard() {
               className="relative w-full max-w-4xl bg-white rounded-[2rem] shadow-2xl overflow-hidden flex flex-col md:flex-row max-h-[90vh]"
             >
               <button
-                onClick={() => setShowReport(false)}
+                onClick={() => { setShowReport(false); setViewMode("details"); }}
                 className="absolute right-6 top-6 z-10 p-2 bg-white/10 hover:bg-white/20 rounded-full text-on-surface transition-colors"
               >
                 <X size={24} />
               </button>
 
-              <div className="md:w-1/3 bg-primary p-10 text-white flex flex-col justify-between" style={{ backgroundColor: '#a43700' }}>
+              <div className="md:w-1/3 bg-primary p-6 md:p-10 text-white flex flex-col justify-between shrink-0" style={{ backgroundColor: '#a43700' }}>
                 <div>
-                  <div className="px-3 py-1 bg-white/20 rounded-lg text-[10px] font-black uppercase tracking-widest inline-block mb-6">Internal Report</div>
-                  <h2 className="text-4xl font-black leading-tight mb-4">Q2 Digital Impact</h2>
-                  <p className="text-white/70 font-medium leading-relaxed">
-                    Comprehensive analysis of the state-wide digital literacy rollout and curriculum readiness.
+                  <div className="px-3 py-1 bg-white/20 rounded-lg text-[10px] font-black uppercase tracking-widest inline-block mb-4 md:mb-6">Internal Audit</div>
+                  <h2 className="text-2xl md:text-4xl font-black leading-tight mb-4">AbiaFIRST Impact</h2>
+                  <p className="text-white/70 font-medium leading-relaxed text-sm md:text-base">
+                    A technical summary of the pilot scale-up and instructional transformation across 8 LGAs.
                   </p>
                 </div>
-                <div className="space-y-6">
+                <div className="space-y-4 md:space-y-6 mt-6 md:mt-0">
                   <div>
                     <div className="text-[10px] font-black uppercase tracking-widest opacity-60 mb-1">Status</div>
-                    <div className="text-xl font-bold">Milestone Reached</div>
+                    <div className="text-lg md:text-xl font-bold">Pilot Completed</div>
                   </div>
                   <div>
                     <div className="text-[10px] font-black uppercase tracking-widest opacity-60 mb-1">Coverage</div>
-                    <div className="text-xl font-bold">24 Zones Verified</div>
+                    <div className="text-lg md:text-xl font-bold">8 LGAs Verified</div>
                   </div>
                 </div>
               </div>
 
-              <div className="flex-1 p-10 md:p-16 overflow-y-auto no-scrollbar bg-white">
+              <div className="flex-1 p-6 md:p-16 overflow-y-auto no-scrollbar bg-white">
                 <div className="prose prose-slate max-w-none">
                   <h3 className="text-2xl font-black text-on-surface mb-6">Executive Summary</h3>
                   <p className="text-on-surface-variant font-medium leading-relaxed mb-8">
-                    AbiaFIRST's digital transformation program has reached a critical turning point. As of June 2024, the primary and secondary education sectors have achieved 15% higher adoption rates than originally projected.
+                    The AbiaFIRST transformation program has achieved its pilot objectives. As of March 2026, the programme successfully scaled from 30 to 235 school visits, reaching over 7,000 educators across 8 priority LGAs.
                   </p>
 
                   <div className="grid grid-cols-2 gap-8 mb-12">
                     <div className="p-6 bg-surface-container-low rounded-2xl border border-outline-variant/30">
-                      <div className="text-3xl font-black text-primary mb-1">2,126</div>
+                      <div className="text-3xl font-black text-primary mb-1">7,454</div>
                       <div className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant">Trainers Certified</div>
                     </div>
                     <div className="p-6 bg-surface-container-low rounded-2xl border border-outline-variant/30">
-                      <div className="text-3xl font-black text-secondary mb-1">+15%</div>
-                      <div className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant">Growth vs Target</div>
+                      <div className="text-3xl font-black text-secondary mb-1">235</div>
+                      <div className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant">Schools Visited</div>
                     </div>
                   </div>
 
@@ -789,20 +1385,20 @@ export default function Dashboard() {
                   <ul className="space-y-4 mb-12">
                     <li className="flex gap-4">
                       <div className="w-6 h-6 rounded-full bg-secondary/10 flex items-center justify-center text-secondary shrink-0 font-bold text-xs">1</div>
-                      <p className="text-on-surface-variant font-medium text-sm">LMT and MT integration has stabilized, with peer-to-peer training sessions increasing by 40% in metropolitan clusters.</p>
+                      <p className="text-on-surface-variant font-medium text-sm">Tiered cascade integration has stabilized with 2,000 Master Trainers and 200 Lead MTs driving school-based professional development.</p>
                     </li>
                     <li className="flex gap-4">
                       <div className="w-6 h-6 rounded-full bg-secondary/10 flex items-center justify-center text-secondary shrink-0 font-bold text-xs">2</div>
-                      <p className="text-on-surface-variant font-medium text-sm">Digital resource accessibility has reached an all-time high, with 28,062 assets successfully mirrored on local school servers.</p>
+                      <p className="text-on-surface-variant font-medium text-sm">Digital resource accessibility reached peak capacity with 41,163 instructional assets developed and deployed.</p>
                     </li>
                     <li className="flex gap-4">
                       <div className="w-6 h-6 rounded-full bg-secondary/10 flex items-center justify-center text-secondary shrink-0 font-bold text-xs">3</div>
-                      <p className="text-on-surface-variant font-medium text-sm">School monitoring visits in Q2 reached 31,660 students, providing high-fidelity data on student engagement levels.</p>
+                      <p className="text-on-surface-variant font-medium text-sm">Monitoring velocity increased 110% during the Oct–Mar 2026 window, providing high-fidelity data across 8 transformed LGAs.</p>
                     </li>
                   </ul>
 
                   <button
-                    onClick={() => setShowReport(false)}
+                    onClick={() => { setShowReport(false); setViewMode("details"); }}
                     className="w-full py-4 bg-on-surface text-white rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-on-surface/90 transition-colors"
                   >
                     Close Report
@@ -832,28 +1428,28 @@ export default function Dashboard() {
               className="relative w-full max-w-4xl bg-white rounded-[2rem] shadow-2xl overflow-hidden flex flex-col md:flex-row max-h-[90vh]"
             >
               <button
-                onClick={() => setShowEducationReport(false)}
+                onClick={() => { setShowEducationReport(false); setViewMode("details"); }}
                 className="absolute right-6 top-6 z-10 p-2 bg-white/10 hover:bg-white/20 rounded-full text-on-surface transition-colors"
               >
                 <X size={24} />
               </button>
 
-              <div className="md:w-1/3 bg-secondary p-6 md:p-10 text-white flex flex-col justify-between" style={{ backgroundColor: '#1b6d24' }}>
+              <div className="md:w-1/3 bg-secondary p-6 md:p-10 text-white flex flex-col justify-between shrink-0" style={{ backgroundColor: '#1b6d24' }}>
                 <div>
-                  <div className="px-3 py-1 bg-white/20 rounded-lg text-[10px] font-black uppercase tracking-widest inline-block mb-6">Production Report</div>
-                  <h2 className="text-3xl md:text-4xl font-black leading-tight mb-4">Curriculum Matrix</h2>
-                  <p className="text-white/70 font-medium leading-relaxed">
+                  <div className="px-3 py-1 bg-white/20 rounded-lg text-[10px] font-black uppercase tracking-widest inline-block mb-4 md:mb-6">Production Report</div>
+                  <h2 className="text-2xl md:text-4xl font-black leading-tight mb-4">Curriculum Matrix</h2>
+                  <p className="text-white/70 font-medium leading-relaxed text-sm md:text-base">
                     Detailed breakdown of digital resource production across all academic tiers.
                   </p>
                 </div>
-                <div className="space-y-6 mt-8 md:mt-0">
+                <div className="space-y-4 md:space-y-6 mt-6 md:mt-0">
                   <div>
                     <div className="text-[10px] font-black uppercase tracking-widest opacity-60 mb-1">Total Assets</div>
-                    <div className="text-xl font-bold">28,062 / 38,833</div>
+                    <div className="text-lg md:text-xl font-bold">28,062 / 38,833</div>
                   </div>
                   <div>
                     <div className="text-[10px] font-black uppercase tracking-widest opacity-60 mb-1">Efficiency</div>
-                    <div className="text-xl font-bold">72% Completed</div>
+                    <div className="text-lg md:text-xl font-bold">72% Completed</div>
                   </div>
                 </div>
               </div>
@@ -914,7 +1510,7 @@ export default function Dashboard() {
                   </div>
 
                   <button
-                    onClick={() => setShowEducationReport(false)}
+                    onClick={() => { setShowEducationReport(false); setViewMode("details"); }}
                     className="w-full py-4 bg-on-surface text-white rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-on-surface/90 transition-colors"
                   >
                     Close Production Report
@@ -944,33 +1540,33 @@ export default function Dashboard() {
               className="relative w-full max-w-4xl bg-white rounded-[2rem] shadow-2xl overflow-hidden flex flex-col md:flex-row max-h-[90vh]"
             >
               <button
-                onClick={() => setShowMonitoringReport(false)}
+                onClick={() => { setShowMonitoringReport(false); setViewMode("details"); }}
                 className="absolute right-6 top-6 z-10 p-2 bg-white/10 hover:bg-white/20 rounded-full text-on-surface transition-colors"
               >
                 <X size={24} />
               </button>
 
-              <div className="md:w-1/3 bg-primary p-10 text-white flex flex-col justify-between" style={{ backgroundColor: '#a43700' }}>
+              <div className="md:w-1/3 bg-primary p-6 md:p-10 text-white flex flex-col justify-between shrink-0" style={{ backgroundColor: '#a43700' }}>
                 <div>
-                  <div className="px-3 py-1 bg-white/20 rounded-lg text-[10px] font-black uppercase tracking-widest inline-block mb-6">H1 2024 Report</div>
-                  <h2 className="text-4xl font-black leading-tight mb-4">Field Reach Analysis</h2>
-                  <p className="text-white/70 font-medium leading-relaxed">
+                  <div className="px-3 py-1 bg-white/20 rounded-lg text-[10px] font-black uppercase tracking-widest inline-block mb-4 md:mb-6">H1 2024 Report</div>
+                  <h2 className="text-2xl md:text-4xl font-black leading-tight mb-4">Field Reach Analysis</h2>
+                  <p className="text-white/70 font-medium leading-relaxed text-sm md:text-base">
                     Monitoring the transformation of Abia's educational ecosystem through on-site verification.
                   </p>
                 </div>
-                <div className="space-y-6">
+                <div className="space-y-4 md:space-y-6 mt-6 md:mt-0">
                   <div>
                     <div className="text-[10px] font-black uppercase tracking-widest opacity-60 mb-1">Total Visits</div>
-                    <div className="text-xl font-bold">112 Verified Sessions</div>
+                    <div className="text-lg md:text-xl font-bold">112 Verified Sessions</div>
                   </div>
                   <div>
                     <div className="text-[10px] font-black uppercase tracking-widest opacity-60 mb-1">Impact</div>
-                    <div className="text-xl font-bold">31,660 Students Reached</div>
+                    <div className="text-lg md:text-xl font-bold">31,660 Students Reached</div>
                   </div>
                 </div>
               </div>
 
-              <div className="flex-1 p-10 md:p-16 overflow-y-auto no-scrollbar bg-white">
+              <div className="flex-1 p-6 md:p-16 overflow-y-auto no-scrollbar bg-white">
                 <div className="prose prose-slate max-w-none">
                   <h3 className="text-2xl font-black text-on-surface mb-6">Monitoring Performance</h3>
                   <p className="text-on-surface-variant font-medium leading-relaxed mb-8">
@@ -994,7 +1590,7 @@ export default function Dashboard() {
 
                   <h3 className="text-xl font-bold text-on-surface mb-4">LGA Coverage Intensity</h3>
                   <div className="space-y-4 mb-12">
-                    {metrics.monitoring.lgaReach.slice(0, 4).map((lga: { name: string; count: number }, i: number) => (
+                    {(metrics.monitoring.lgaReach as { name: string; count: number }[]).slice(0, 4).map((lga, i) => (
                       <div key={i} className="flex items-center justify-between p-4 bg-surface-container-low rounded-xl">
                         <span className="font-bold">{lga.name}</span>
                         <div className="flex items-center gap-4">
@@ -1008,7 +1604,7 @@ export default function Dashboard() {
                   </div>
 
                   <button
-                    onClick={() => setShowMonitoringReport(false)}
+                    onClick={() => { setShowMonitoringReport(false); setViewMode("details"); }}
                     className="w-full py-4 bg-on-surface text-white rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-on-surface/90 transition-colors"
                   >
                     Close Monitoring Report
@@ -1038,37 +1634,37 @@ export default function Dashboard() {
               className="relative w-full max-w-4xl bg-white rounded-[2rem] shadow-2xl overflow-hidden flex flex-col md:flex-row max-h-[90vh]"
             >
               <button
-                onClick={() => setShowPersonnelReport(false)}
+                onClick={() => { setShowPersonnelReport(false); setViewMode("details"); }}
                 className="absolute right-6 top-6 z-10 p-2 bg-white/10 hover:bg-white/20 rounded-full text-on-surface transition-colors"
               >
                 <X size={24} />
               </button>
 
-              <div className="md:w-1/3 bg-secondary p-10 text-white flex flex-col justify-between" style={{ backgroundColor: '#1b6d24' }}>
+              <div className="md:w-1/3 bg-secondary p-6 md:p-10 text-white flex flex-col justify-between shrink-0" style={{ backgroundColor: '#1b6d24' }}>
                 <div>
-                  <div className="px-3 py-1 bg-white/20 rounded-lg text-[10px] font-black uppercase tracking-widest inline-block mb-6">Staffing Report</div>
-                  <h2 className="text-4xl font-black leading-tight mb-4">Human Capital Index</h2>
-                  <p className="text-white/70 font-medium leading-relaxed">
+                  <div className="px-3 py-1 bg-white/20 rounded-lg text-[10px] font-black uppercase tracking-widest inline-block mb-4 md:mb-6">Staffing Report</div>
+                  <h2 className="text-2xl md:text-4xl font-black leading-tight mb-4">Human Capital Index</h2>
+                  <p className="text-white/70 font-medium leading-relaxed text-sm md:text-base">
                     Analyzing the growth and deployment of certified educational trainers across Abia State.
                   </p>
                 </div>
-                <div className="space-y-6">
+                <div className="space-y-4 md:space-y-6 mt-6 md:mt-0">
                   <div>
                     <div className="text-[10px] font-black uppercase tracking-widest opacity-60 mb-1">Active Force</div>
-                    <div className="text-xl font-bold">2,126 Personnel</div>
+                    <div className="text-lg md:text-xl font-bold">7,454 Personnel</div>
                   </div>
                   <div>
                     <div className="text-[10px] font-black uppercase tracking-widest opacity-60 mb-1">Zone Reach</div>
-                    <div className="text-xl font-bold">24 Educational Zones</div>
+                    <div className="text-lg md:text-xl font-bold">8 Pilot LGAs</div>
                   </div>
                 </div>
               </div>
 
-              <div className="flex-1 p-10 md:p-16 overflow-y-auto no-scrollbar bg-white">
+              <div className="flex-1 p-6 md:p-16 overflow-y-auto no-scrollbar bg-white">
                 <div className="prose prose-slate max-w-none">
                   <h3 className="text-2xl font-black text-on-surface mb-6">Trainer Growth & Deployment</h3>
                   <p className="text-on-surface-variant font-medium leading-relaxed mb-8">
-                    Q2 2024 has seen a 12% increase in the number of certified Master Trainers, supporting the state-wide rollout of the digital curriculum in 1,461 schools.
+                    The March 2026 milestone reflects a significant scale-up in specialized human capital, supporting the state-wide rollout of the digital curriculum in 235 verified schools.
                   </p>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
@@ -1077,7 +1673,7 @@ export default function Dashboard() {
                         <Users2 className="text-secondary" size={24} />
                       </div>
                       <div>
-                        <div className="text-sm font-bold text-on-surface">199 Lead Master Trainers</div>
+                        <div className="text-sm font-bold text-on-surface">200 Lead Master Trainers</div>
                         <div className="text-[10px] font-black text-on-surface-variant/60 uppercase">Certified Specialists</div>
                       </div>
                     </div>
@@ -1086,7 +1682,7 @@ export default function Dashboard() {
                         <Users2 className="text-primary" size={24} />
                       </div>
                       <div>
-                        <div className="text-sm font-bold text-on-surface">1,927 Master Trainers</div>
+                        <div className="text-sm font-bold text-on-surface">2,000 Master Trainers</div>
                         <div className="text-[10px] font-black text-on-surface-variant/60 uppercase">Field Educators</div>
                       </div>
                     </div>
@@ -1094,7 +1690,7 @@ export default function Dashboard() {
 
                   <h3 className="text-xl font-bold text-on-surface mb-4">Level-wise Trainer Concentration</h3>
                   <div className="space-y-3 mb-12">
-                    {metrics.personnel.levelBreakdown.map((row: any, i: number) => (
+                    {(metrics.personnel.levelBreakdown as { label: string; lmt: number; mt: number; total: number }[]).map((row, i) => (
                       <div key={i} className="flex items-center justify-between p-4 bg-surface-container-low/50 rounded-xl border border-outline-variant/10">
                         <span className="font-bold text-on-surface">{row.label}</span>
                         <div className="flex items-center gap-6">
@@ -1111,7 +1707,7 @@ export default function Dashboard() {
                   </div>
 
                   <button
-                    onClick={() => setShowPersonnelReport(false)}
+                    onClick={() => { setShowPersonnelReport(false); setViewMode("details"); }}
                     className="w-full py-4 bg-on-surface text-white rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-on-surface/90 transition-colors"
                   >
                     Close Staffing Report

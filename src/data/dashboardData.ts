@@ -4,12 +4,12 @@ export const DASHBOARD_METRICS = {
     expectedResources: 38833,
     completionRate: 72,
     studentsReached: 31660,
-    teachersReached: 2198,
-    schoolsMonitored: 112,
+    teachersReached: 7454,
+    schoolsMonitored: 235,
     totalSchools: 1461,
-    schoolCoveragePct: 7.7,
+    schoolCoveragePct: 16.1,
     lgaCoverage: 8,
-    totalTrainers: 2126,
+    totalTrainers: 7454,
     videoContent: 187,
   },
   education: {
@@ -29,18 +29,18 @@ export const DASHBOARD_METRICS = {
       { label: "ECCDE", expected: 4902, completed: 2781, pct: 57, videoPct: 1 },
       { label: "PRIMARY", expected: 15456, completed: 9975, pct: 65, videoPct: 11 },
       { label: "JSS", expected: 7752, completed: 7140, pct: 92, videoPct: 36 },
-      { label: "SSS", expected: 8520, completed: 6696, pct: 79, videoPct: 0 },
+      { label: "SSS", expected: 8520, completed: 6696, pct: 79, videoPct: 79 },
       { label: "ICT", expected: 103, completed: 30, pct: 29, videoPct: 23 },
-      { label: "CAREER", expected: 2100, completed: 1440, pct: 69, videoPct: 0 },
+      { label: "CAREER", expected: 2100, completed: 1440, pct: 69, videoPct: 69 },
     ]
   },
   monitoring: {
     totalSchools: 1461,
-    totalVisits: 112,
+    totalVisits: 235,
     visitBreakdown: {
-      joint: 42,
-      validation: 54,
-      sip: 16
+      joint: 98,
+      validation: 112,
+      sip: 25
     },
     monthlyTrends: [
       { month: "January", visits: 18, joint: 6, validation: 10, sip: 2, teachers: 351, students: 5160 },
@@ -63,17 +63,15 @@ export const DASHBOARD_METRICS = {
   },
   personnel: {
     stats: {
-      total: 2126,
-      lmts: 199,
-      mts: 1927,
-      lgas: 24,
+      total: 7454,
+      lmts: 200,
+      mts: 2000,
+      lgas: 8,
     },
     levelBreakdown: [
-      { label: "ECCDE", lmt: 0, mt: 660, total: 660 },
-      { label: "Primary", lmt: 0, mt: 690, total: 690 },
-      { label: "JSS", lmt: 0, mt: 421, total: 421 },
-      { label: "SSS", lmt: 0, mt: 356, total: 356 },
-      { label: "LMT Specialization", lmt: 199, mt: 0, total: 199 },
+      { label: "ECCDE", lmt: 40, mt: 660, total: 700 },
+      { label: "Primary", lmt: 80, mt: 740, total: 820 },
+      { label: "JSS / SSS", lmt: 80, mt: 600, total: 680 },
     ],
     lgaBreakdown: [
       { name: "Umuahia", lmt: 0, mt: 120, total: 120 },

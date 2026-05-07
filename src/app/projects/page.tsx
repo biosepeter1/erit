@@ -76,43 +76,45 @@ export default function ProjectsPage() {
             className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-10 cursor-zoom-out overflow-hidden"
             onClick={() => setSelectedImage(null)}
           >
+            {/* Optimized Background */}
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.4 }}
-              className="absolute inset-0 z-0"
+              transition={{ duration: 0.3 }}
+              className="absolute inset-0 z-0 pointer-events-none"
             >
               <Image 
                 src={selectedImage} 
                 alt="Blur Background" 
                 fill 
-                className="object-cover blur-[100px] brightness-[0.3] scale-110"
+                className="object-cover blur-2xl brightness-[0.2] scale-105 transform-gpu"
+                priority
               />
-              <div className="absolute inset-0 bg-black/60" />
+              <div className="absolute inset-0 bg-black/40" />
             </motion.div>
 
             <motion.button
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="absolute top-4 right-4 md:top-8 md:right-8 z-20 text-white/60 hover:text-white transition-colors p-2 md:p-3 bg-white/10 backdrop-blur-md rounded-full border border-white/20"
+              className="absolute top-4 right-4 md:top-8 md:right-8 z-20 text-white/80 hover:text-white transition-colors p-3 bg-white/20 rounded-full border border-white/30"
               onClick={() => setSelectedImage(null)}
             >
               <X size={24} className="md:w-7 md:h-7" />
             </motion.button>
 
             <motion.div
-              initial={{ scale: 0.95, opacity: 0 }}
+              initial={{ scale: 0.98, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.95, opacity: 0 }}
-              transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
-              className="relative w-full max-w-5xl aspect-[16/10] md:aspect-[16/10] z-10 overflow-hidden rounded-2xl md:rounded-3xl shadow-[0_0_100px_rgba(0,0,0,0.8)] border border-white/10"
+              exit={{ scale: 0.98, opacity: 0 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className="relative w-full max-w-5xl aspect-[16/10] z-10 overflow-hidden rounded-2xl md:rounded-3xl shadow-[0_0_80px_rgba(0,0,0,0.9)] border border-white/5"
               onClick={(e) => e.stopPropagation()}
             >
               <Image 
                 src={selectedImage} 
                 alt="Selected Project" 
                 fill 
-                className="object-contain"
+                className="object-contain transform-gpu"
                 sizes="100vw"
                 priority
               />
@@ -127,11 +129,11 @@ export default function ProjectsPage() {
           <motion.div
             key={currentSlide}
             initial={{ opacity: 0, scale: 1 }}
-            animate={{ opacity: 1, scale: 1.1 }}
+            animate={{ opacity: 1, scale: 1.05 }}
             exit={{ opacity: 0 }}
             transition={{ 
-              opacity: { duration: 1.2, ease: "easeInOut" },
-              scale: { duration: 6, ease: "linear" } 
+              opacity: { duration: 1, ease: "easeInOut" },
+              scale: { duration: 5, ease: "linear" } 
             }}
             className="absolute inset-0 z-0"
           >
@@ -139,7 +141,7 @@ export default function ProjectsPage() {
               src={carouselImages[currentSlide]} 
               alt={`Slide ${currentSlide + 1}`} 
               fill 
-              className="object-cover brightness-[0.4]"
+              className="object-cover brightness-[0.4] transform-gpu"
               priority
               sizes="100vw"
               loading="eager"
@@ -151,9 +153,9 @@ export default function ProjectsPage() {
 
         <div className="relative z-20 text-center px-6 w-full">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
+            transition={{ delay: 0.2 }}
           >
             <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-[12rem] font-black text-white tracking-widest uppercase leading-none mb-4 md:mb-6">
               Projects
@@ -195,10 +197,10 @@ export default function ProjectsPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {teacherImages.slice(0, visibleTeacherImages).map((src, i) => (
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: (i % 3) * 0.1 }}
+              transition={{ delay: (i % 3) * 0.05 }}
               key={src}
             >
               <ProjectImage 
@@ -239,10 +241,10 @@ export default function ProjectsPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {schoolImages.slice(0, visibleSchoolImages).map((src, i) => (
                 <motion.div
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 15 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: (i % 3) * 0.1 }}
+                  transition={{ delay: (i % 3) * 0.05 }}
                   key={src}
                 >
                   <ProjectImage 
@@ -274,23 +276,23 @@ export default function ProjectsPage() {
 function ProjectImage({ src, height, onClick, priority }: { src: string, height: string, onClick: () => void, priority?: boolean }) {
     return (
         <motion.div 
-            whileHover={{ y: -8 }}
+            whileHover={{ y: -6 }}
             onClick={onClick}
-            className={`relative ${height} rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden group shadow-lg border border-black/5 cursor-zoom-in`}
+            className={`relative ${height} rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden group shadow-lg border border-black/5 cursor-zoom-in transform-gpu`}
         >
             <Image 
                 src={src} 
                 alt="Project Image" 
                 fill 
-                className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                className="object-cover transition-transform duration-700 group-hover:scale-105 transform-gpu"
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 priority={priority}
                 loading={priority ? "eager" : "lazy"}
             />
-            <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all duration-500" />
+            <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all duration-300" />
             
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <div className="w-10 h-10 md:w-14 md:h-14 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/30 text-white">
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                <div className="w-10 h-10 md:w-14 md:h-14 bg-white/30 rounded-full flex items-center justify-center border border-white/40 text-white shadow-xl">
                     <Maximize2 size={20} className="md:w-6 md:h-6" />
                 </div>
             </div>
