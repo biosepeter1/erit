@@ -24,7 +24,7 @@ export default function CommunityPage() {
   return (
     <div className="bg-pattern min-h-screen pb-20">
       {/* Hero Section */}
-      <section className="relative h-[650px] w-full overflow-hidden bg-surface-container-low">
+      <section className="relative h-[500px] md:h-[650px] w-full overflow-hidden bg-surface-container-low">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide}
@@ -58,7 +58,7 @@ export default function CommunityPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-6xl font-extrabold text-white mb-8 max-w-2xl leading-tight"
+            className="text-3xl md:text-6xl font-extrabold text-white mb-6 md:mb-8 max-w-2xl leading-tight"
           >
             Building the Future Together
           </motion.h1>
@@ -66,7 +66,7 @@ export default function CommunityPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-lg text-white/90 mb-10 max-w-xl leading-relaxed"
+            className="text-base md:text-lg text-white/90 mb-8 md:mb-10 max-w-xl leading-relaxed"
           >
             Strengthening governance and local support through active participation. Join our School-Based Management Committee to directly impact the quality of education in your local community.
           </motion.p>
@@ -100,23 +100,23 @@ export default function CommunityPage() {
         <section className="mb-24">
           <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-8">
             <div className="max-w-2xl">
-              <h2 className="text-4xl font-extrabold text-on-surface mb-4 tracking-tight">Impact in Your Backyard</h2>
-              <p className="text-on-surface-variant text-lg">Real transformation is happening at the grassroots. We are tracking progress LGA by LGA to ensure no school is left behind.</p>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-on-surface mb-4 tracking-tight">Impact in Your Backyard</h2>
+              <p className="text-on-surface-variant text-base md:text-lg">Real transformation is happening at the grassroots. We are tracking progress LGA by LGA to ensure no school is left behind.</p>
             </div>
-            <div className="flex flex-col sm:flex-row gap-4 md:gap-8 items-center bg-white p-6 rounded-2xl border border-outline-variant shadow-xl">
-              <div className="text-center px-6 sm:border-r border-b sm:border-b-0 border-outline-variant pb-4 sm:pb-0">
-                <div className="text-5xl font-extrabold text-primary">8</div>
+            <div className="flex flex-col sm:flex-row gap-4 md:gap-8 items-center bg-white p-5 md:p-6 rounded-2xl border border-outline-variant shadow-xl">
+              <div className="text-center px-4 md:px-6 sm:border-r border-b sm:border-b-0 border-outline-variant pb-4 sm:pb-0 w-full sm:w-auto">
+                <div className="text-4xl md:text-5xl font-extrabold text-primary">8</div>
                 <div className="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mt-1">LGAs TRANSFORMED</div>
               </div>
-              <div className="text-center px-6">
-                <div className="text-5xl font-extrabold text-secondary">150+</div>
+              <div className="text-center px-4 md:px-6 w-full sm:w-auto">
+                <div className="text-4xl md:text-5xl font-extrabold text-secondary">150+</div>
                 <div className="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mt-1">SCHOOLS UPGRADED</div>
               </div>
             </div>
           </div>
 
-          <div className="grid grid-cols-12 gap-8">
-            <div className="col-span-12 md:col-span-8 bg-white border border-outline-variant rounded-2xl overflow-hidden relative min-h-[500px] shadow-sm group">
+          <div className="grid grid-cols-12 gap-6 md:gap-8">
+            <div className="col-span-12 md:col-span-8 bg-white border border-outline-variant rounded-2xl overflow-hidden relative min-h-[300px] md:min-h-[500px] shadow-sm group">
               <div className="absolute top-6 left-6 z-10 bg-white/95 backdrop-blur-md p-6 rounded-xl border border-outline-variant shadow-xl max-w-xs">
                 <h3 className="font-bold text-primary mb-2 flex items-center gap-2">
                   <MapPin size={18} /> Regional Progress Map
@@ -155,8 +155,8 @@ export default function CommunityPage() {
         <section className="mb-24">
            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
               <div>
-                <h2 className="text-4xl font-extrabold text-on-surface mb-4 tracking-tight">Success Stories & Impact Narratives</h2>
-                <p className="text-on-surface-variant text-lg">Voices from the field: Teachers and students transformed by AbiaFIRST.</p>
+                <h2 className="text-3xl md:text-4xl font-extrabold text-on-surface mb-4 tracking-tight">Success Stories & Impact Narratives</h2>
+                <p className="text-on-surface-variant text-base md:text-lg">Voices from the field: Teachers and students transformed by AbiaFIRST.</p>
               </div>
               <div className="px-6 py-3 bg-secondary/10 text-secondary rounded-xl font-black uppercase tracking-widest text-sm border border-secondary/20">
                 Teacher Testimonials
@@ -258,12 +258,12 @@ export default function CommunityPage() {
               { title: "Resources", desc: "From books to sports equipment, your contributions directly enhance the school experience.", icon: <Package />, color: "secondary", action: "See Wishlist", link: "/contact" },
               { title: "Funding", desc: "Contribute to specific school infrastructure projects through transparent tracking.", icon: <CreditCard />, color: "tertiary", action: "Donate Now", link: "/contact" }
             ].map((item, i) => (
-              <div key={i} className="bg-white border border-outline-variant p-10 rounded-2xl text-center group hover:shadow-2xl transition-all duration-500 flex flex-col">
-                <div className={`w-24 h-24 bg-surface-container-low rounded-3xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-transform text-${item.color}`}>
+              <div key={i} className="bg-white border border-outline-variant p-6 md:p-10 rounded-2xl text-center group hover:shadow-2xl transition-all duration-500 flex flex-col">
+                <div className={`w-20 h-20 md:w-24 md:h-24 bg-surface-container-low rounded-3xl flex items-center justify-center mx-auto mb-6 md:mb-8 group-hover:scale-110 transition-transform text-${item.color}`}>
                   {item.icon}
                 </div>
-                <h3 className="text-2xl font-bold mb-4">{item.title}</h3>
-                <p className="text-on-surface-variant mb-8 leading-relaxed flex-1">{item.desc}</p>
+                <h3 className="text-xl md:text-2xl font-bold mb-4">{item.title}</h3>
+                <p className="text-sm md:text-base text-on-surface-variant mb-6 md:mb-8 leading-relaxed flex-1">{item.desc}</p>
                 <Link 
                   href={item.link} 
                   className="w-full block text-center py-4 text-white font-bold rounded-xl uppercase tracking-widest text-xs shadow-lg hover:brightness-110 transition-all"

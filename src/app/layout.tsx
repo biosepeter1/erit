@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Public_Sans } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import NavigationWrapper from "@/components/NavigationWrapper";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -27,9 +26,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${publicSans.variable}`}>
       <body className="antialiased bg-background text-on-surface">
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
+        <NavigationWrapper>
+          {children}
+        </NavigationWrapper>
       </body>
     </html>
   );

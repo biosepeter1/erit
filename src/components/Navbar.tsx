@@ -14,7 +14,8 @@ function cn(...inputs: ClassValue[]) {
 }
 
 const navLinks = [
-  { name: "Dashboard", href: "/" },
+  { name: "Govt Mandate", href: "/" },
+  { name: "Dashboard", href: "/dashboard" },
   { name: "Project", href: "/projects" },
   { name: "Impact Report", href: "/impact-report" },
   { name: "Community", href: "/community" },

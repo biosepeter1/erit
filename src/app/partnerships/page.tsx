@@ -16,12 +16,12 @@ export default function PartnershipsPage() {
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="px-6 py-24"
+            className="px-6 py-12 md:py-24"
           >
             <span className="inline-block px-3 py-1 bg-[#f4e8e1] text-[#a43700] font-bold text-[10px] rounded mb-6 uppercase tracking-widest">
               Global Partnership Invitation
             </span>
-            <h1 className="text-4xl lg:text-6xl font-medium text-on-surface mb-6 leading-tight">
+            <h1 className="text-3xl lg:text-6xl font-medium text-on-surface mb-6 leading-tight">
               Partner with the Abia Education Revolution
             </h1>
             <p className="text-sm text-on-surface-variant mb-10 max-w-md leading-relaxed">
@@ -61,7 +61,7 @@ export default function PartnershipsPage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl font-bold text-on-surface mb-4"
+            className="text-2xl md:text-3xl font-bold text-on-surface mb-4"
           >
             The Transformation Story
           </motion.h2>
@@ -127,7 +127,7 @@ export default function PartnershipsPage() {
       </section>
 
       {/* Stats Bar (Impact) */}
-      <section className="relative py-32 bg-on-surface overflow-hidden">
+      <section className="relative py-20 md:py-32 bg-on-surface overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src="/pdf_images/page_2_img_1.jpeg"
@@ -160,7 +160,7 @@ export default function PartnershipsPage() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
               >
-                <p className="text-5xl font-extrabold mb-2">{stat.val}</p>
+                <p className="text-4xl md:text-5xl font-extrabold mb-2">{stat.val}</p>
                 <p className="font-bold uppercase tracking-widest text-[10px] opacity-80">{stat.label}</p>
               </motion.div>
             ))}

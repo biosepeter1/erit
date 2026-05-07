@@ -3,8 +3,8 @@ import { Mail, Phone, Globe } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-surface-container-highest border-t border-outline-variant pt-16 pb-8">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+    <footer className="bg-surface-container-highest border-t border-outline-variant pt-10 md:pt-16 pb-8">
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-12 mb-10 md:mb-12">
         <div className="md:col-span-1">
           <h2 className="text-2xl text-primary font-bold mb-4">AbiaFIRST</h2>
           <p className="text-on-surface-variant text-sm leading-relaxed max-w-xs">

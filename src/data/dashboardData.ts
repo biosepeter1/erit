@@ -108,5 +108,34 @@ export const DASHBOARD_METRICS = {
       { name: "Ozonta Kelechi", lga: "Ugwanagbo", level: "Primary", school: "Akanu Ngwa 1 C/S" },
       { name: "Amaefu Charity", lga: "Ugwanagbo", level: "Primary", school: "Osusu- Umuelendu MFPS" },
     ]
+  },
+  impact: {
+    performance: {
+      masteryIncrease: { from: 31.1, to: 71.5, label: "Mastery Level" },
+      lowPerformersDecrease: { from: 39.9, to: 8.9, label: "Low Performers" },
+      overallGains: { pre: 53.2, post: 74.2, gain: 21, label: "Test Average" },
+      cascadeGains: { pre: 64.4, post: 93.3, gain: 29, label: "Learning Gain" }
+    },
+    classroom: {
+      skillApplication: 97.1,
+      skillApplicationRate: 43.3,
+      interactions: 69.8,
+      teachersObserved: 398,
+      trainedTeacherPct: 84.7
+    },
+    scoreDistribution: [
+      { label: "Excellent (90-100%)", value: 18.6, color: "bg-green-500" },
+      { label: "Very Good (80-89%)", value: 34.2, color: "bg-blue-500" },
+      { label: "Good (70-79%)", value: 27.5, color: "bg-yellow-500" },
+      { label: "Moderate (60-69%)", value: 12.1, color: "bg-orange-500" },
+      { label: "Below 60%", value: 7.6, color: "bg-red-500" }
+    ],
+    lgaPerformance: [
+      { name: "Umuahia North", score: 79.4 },
+      { name: "Aba South", score: 77.8 },
+      { name: "Ohafia", score: 74.6 },
+      { name: "Bende", score: 75.9 },
+      { name: "Osisioma", score: 73.2 }
+    ]
   }
 };
