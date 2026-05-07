@@ -25,14 +25,14 @@ export default function PartnershipsPage() {
               Partner with the Abia Education Revolution
             </h1>
             <p className="text-sm text-on-surface-variant mb-10 max-w-md leading-relaxed">
-              Joining forces with with, Tech Innovators, and Global Investors to redefine the educational landscape of Abia State through scalable technology and systemic reform.
+              Join forces with the Education Reform Team to redefine the educational landscape of Abia State through scalable technology and systemic reform.
             </p>
             <div className="flex flex-wrap gap-4">
               <button className="bg-[#a43700] text-white px-6 py-3 font-bold text-xs uppercase tracking-widest hover:brightness-110 transition-all rounded shadow-lg shadow-[#a43700]/30">
-                Download Prospectus
+                What we do
               </button>
               <button className="bg-[#c29858] text-white px-6 py-3 font-bold text-xs uppercase tracking-widest hover:brightness-110 transition-all rounded shadow-lg shadow-[#c29858]/30">
-                Invest Now
+                Donate Now
               </button>
             </div>
           </motion.div>
@@ -48,6 +48,7 @@ export default function PartnershipsPage() {
               alt="Educational Technology Partnership"
               fill
               className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </motion.div>
         </div>
@@ -133,6 +134,7 @@ export default function PartnershipsPage() {
             alt="Background"
             fill
             className="object-cover opacity-60 filter blur-[2px]"
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-black/40" />
         </div>

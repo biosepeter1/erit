@@ -15,7 +15,7 @@ function cn(...inputs: ClassValue[]) {
 
 const navLinks = [
   { name: "Dashboard", href: "/" },
-  { name: "Project", href: "https://eriteam.org/projects/" },
+  { name: "Project", href: "/projects" },
   { name: "Community", href: "/community" },
   { name: "Partnerships", href: "/partnerships" },
 ];
@@ -35,6 +35,7 @@ export default function Navbar() {
               width={40} 
               height={40} 
               className="object-contain"
+              style={{ height: 'auto' }}
             />
             AbiaFIRST
           </Link>
