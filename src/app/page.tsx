@@ -53,7 +53,7 @@ export default function Dashboard() {
               <ShieldCheck size={28} />
             </div>
             <h1 className="text-3xl md:text-4xl font-extrabold text-on-surface tracking-tight leading-tight">
-              Institutional Dashboard
+              AbiaFIRST Dashboard
             </h1>
           </div>
           <p className="text-base md:text-lg text-on-surface-variant max-w-2xl font-medium">
