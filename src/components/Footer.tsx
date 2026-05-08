@@ -73,7 +73,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="max-w-7xl mx-auto px-6 pt-6 border-t border-outline-variant/30 text-center">
-        <p className="text-[10px] text-on-surface-variant uppercase tracking-[0.2em] opacity-60">
+        <p className="text-[10px] text-on-surface-variant uppercase tracking-[0.2em] opacity-80 font-medium">
           © {new Date().getFullYear()} Ministry of basic and Secondary Education Abia State. All rights reserved.
         </p>
       </div>

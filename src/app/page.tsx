@@ -111,7 +111,7 @@ export default function MandatePage() {
             >
               <Image src="/pdf_images/page_1_img_4.jpeg" alt="Logo" width={40} height={40} className="md:w-16 md:h-16" />
               <div>
-                <p className="text-white text-[10px] md:text-xs font-black uppercase tracking-[0.4em] opacity-60">Abia State Government</p>
+                <p className="text-white text-[10px] md:text-xs font-black uppercase tracking-[0.4em] opacity-90">Abia State Government</p>
                 <p className="text-white text-[8px] md:text-[10px] font-bold uppercase tracking-widest opacity-40">Ministry of Basic and Secondary Education</p>
               </div>
             </motion.div>
@@ -314,7 +314,7 @@ export default function MandatePage() {
                   {stat.label}
                 </div>
                 {stat.trend && (
-                  <div className="mt-2 text-[8px] md:text-[9px] font-black text-orange-600 uppercase tracking-widest opacity-60">
+                  <div className="mt-2 text-[8px] md:text-[9px] font-black text-orange-600 uppercase tracking-widest opacity-90">
                     {stat.trend}
                   </div>
                 )}

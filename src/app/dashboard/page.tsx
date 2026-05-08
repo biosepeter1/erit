@@ -122,9 +122,9 @@ export default function Dashboard() {
                           </p>
                         </div>
                         <div className="grid grid-cols-3 gap-6">
-                          <div><div className="text-2xl font-black text-primary">7,454</div><div className="text-[9px] font-black uppercase tracking-widest text-on-surface-variant opacity-60">Educators</div></div>
-                          <div><div className="text-2xl font-black text-secondary">235</div><div className="text-[9px] font-black uppercase tracking-widest text-on-surface-variant opacity-60">Schools</div></div>
-                          <div><div className="text-2xl font-black text-on-surface">31.6k</div><div className="text-[9px] font-black uppercase tracking-widest text-on-surface-variant opacity-60">Students</div></div>
+                          <div><div className="text-2xl font-black text-primary">7,454</div><div className="text-[9px] font-black uppercase tracking-widest text-on-surface-variant opacity-90">Educators</div></div>
+                          <div><div className="text-2xl font-black text-secondary">235</div><div className="text-[9px] font-black uppercase tracking-widest text-on-surface-variant opacity-90">Schools</div></div>
+                          <div><div className="text-2xl font-black text-on-surface">31.6k</div><div className="text-[9px] font-black uppercase tracking-widest text-on-surface-variant opacity-90">Students</div></div>
                         </div>
                         <div className="pt-8 flex flex-col sm:flex-row gap-4">
                           <button onClick={() => setViewMode("details")} className="w-full sm:w-auto px-8 py-4 md:py-5 bg-[#a43700] text-white rounded-2xl font-black uppercase tracking-widest text-xs flex items-center justify-center gap-3 hover:scale-105 transition-all shadow-lg shadow-primary/20">
@@ -301,7 +301,7 @@ export default function Dashboard() {
                     <div className="flex justify-between items-start mb-12">
                       <div>
                         <h3 className="text-xl font-bold text-on-surface">Improvement Velocity</h3>
-                        <p className="text-xs font-bold text-on-surface-variant uppercase tracking-widest opacity-60">Program Performance Gains</p>
+                        <p className="text-xs font-bold text-on-surface-variant uppercase tracking-widest opacity-90">Program Performance Gains</p>
                       </div>
                       <TrendingUp className="text-primary" size={24} />
                     </div>
@@ -316,7 +316,7 @@ export default function Dashboard() {
                           <div className="flex justify-between items-end">
                             <div>
                               <div className="text-sm font-black text-on-surface">{bar.label}</div>
-                              <div className="text-[10px] font-bold text-on-surface-variant opacity-60">{bar.sub}</div>
+                              <div className="text-[10px] font-bold text-on-surface-variant opacity-90">{bar.sub}</div>
                             </div>
                             <div className="text-2xl font-black text-on-surface">+{bar.value}%</div>
                           </div>
@@ -363,10 +363,10 @@ export default function Dashboard() {
 
                     <div className="space-y-4">
                       <div className="flex justify-between items-center p-4 bg-white/5 rounded-2xl border border-white/10">
-                        <div className="text-xs font-bold opacity-60 uppercase tracking-widest">Implementation Rate</div>
+                        <div className="text-xs font-bold opacity-90 uppercase tracking-widest">Implementation Rate</div>
                         <div className="text-xl font-black text-secondary">97.1%</div>
                       </div>
-                      <div className="text-[10px] font-bold text-white/40 leading-relaxed text-center">
+                      <div className="text-[10px] font-bold text-white/75 leading-relaxed text-center">
                         Modern methods adopted across 41,163 curriculum assets.
                       </div>
                     </div>
@@ -469,7 +469,7 @@ export default function Dashboard() {
                 <div className="p-6 md:p-10 flex flex-col justify-center flex-1">
                   <div className="flex items-center gap-3 mb-4">
                     <span className="px-2 py-0.5 bg-green-100 text-green-700 text-[10px] font-black uppercase tracking-widest rounded">Growth Metric</span>
-                    <span className="text-[10px] font-bold text-on-surface-variant/40 uppercase tracking-widest">• 2 hours ago</span>
+                    <span className="text-[10px] font-bold text-on-surface-variant/75 uppercase tracking-widest">• 2 hours ago</span>
                   </div>
                   <h3 className="text-3xl font-black text-on-surface leading-tight mb-4">
                     State-wide Digital Literacy Certification Program Reaches Milestone
@@ -510,8 +510,8 @@ export default function Dashboard() {
                         <h2 className="text-4xl font-black leading-tight text-on-surface mb-6">Digital Curriculum: <br/>The New Standard</h2>
                         <p className="text-on-surface-variant font-medium text-lg leading-relaxed mb-10">Digitized the entire state curriculum, producing 28,062 instructional assets.</p>
                         <div className="grid grid-cols-2 gap-8 mb-10">
-                          <div><div className="text-3xl font-black text-secondary">72%</div><div className="text-[10px] font-black uppercase tracking-widest opacity-60">Efficiency</div></div>
-                          <div><div className="text-3xl font-black text-on-surface">28,062</div><div className="text-[10px] font-black uppercase tracking-widest opacity-60">Assets</div></div>
+                          <div><div className="text-3xl font-black text-secondary">72%</div><div className="text-[10px] font-black uppercase tracking-widest opacity-90">Efficiency</div></div>
+                          <div><div className="text-3xl font-black text-on-surface">28,062</div><div className="text-[10px] font-black uppercase tracking-widest opacity-90">Assets</div></div>
                         </div>
                         <button onClick={() => setViewMode("details")} className="px-8 py-5 bg-[#1b6d24] text-white rounded-2xl font-black uppercase tracking-widest text-xs flex items-center justify-center gap-3 hover:scale-105 transition-all shadow-lg shadow-secondary/20">
                           Explore Production Metrics <ArrowRight size={18} />
@@ -807,7 +807,7 @@ export default function Dashboard() {
                     {metrics.education.resourceTypes.map((type: any, i: number) => (
                       <div key={i}>
                         <div className="flex justify-between items-center mb-2">
-                          <span className="text-[10px] font-black text-white/40 uppercase tracking-[0.2em]">{type.label}</span>
+                          <span className="text-[10px] font-black text-white/75 uppercase tracking-[0.2em]">{type.label}</span>
                           <span className="text-sm font-black">{type.pct}%</span>
                         </div>
                         <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
@@ -908,7 +908,7 @@ export default function Dashboard() {
                 <div className="p-6 md:p-10 flex flex-col justify-center flex-1">
                   <div className="flex items-center gap-3 mb-4">
                     <span className="px-2 py-0.5 bg-blue-100 text-blue-700 text-[10px] font-black uppercase tracking-widest rounded">Academic Progress</span>
-                    <span className="text-[10px] font-bold text-on-surface-variant/40 uppercase tracking-widest">• Updated Today</span>
+                    <span className="text-[10px] font-bold text-on-surface-variant/75 uppercase tracking-widest">• Updated Today</span>
                   </div>
                   <h3 className="text-3xl font-black text-on-surface leading-tight mb-4">
                     Term 1 & 2 Digital Curriculum Matrix Successfully Completed
@@ -949,9 +949,9 @@ export default function Dashboard() {
                         <h2 className="text-4xl font-black leading-tight text-on-surface mb-6">Rigorous Field <br/>Verification</h2>
                         <p className="text-on-surface-variant font-medium text-lg leading-relaxed mb-10">Deploying field teams across 8 LGAs to verify digital adoption and instructional quality.</p>
                         <div className="grid grid-cols-3 gap-6 mb-10">
-                          <div><div className="text-2xl font-black text-primary">112</div><div className="text-[9px] font-black uppercase tracking-widest opacity-60">Visits</div></div>
-                          <div><div className="text-2xl font-black text-secondary">90.3%</div><div className="text-[9px] font-black uppercase tracking-widest opacity-60">Attendance</div></div>
-                          <div><div className="text-2xl font-black text-on-surface">8</div><div className="text-[9px] font-black uppercase tracking-widest opacity-60">LGAs</div></div>
+                          <div><div className="text-2xl font-black text-primary">112</div><div className="text-[9px] font-black uppercase tracking-widest opacity-90">Visits</div></div>
+                          <div><div className="text-2xl font-black text-secondary">90.3%</div><div className="text-[9px] font-black uppercase tracking-widest opacity-90">Attendance</div></div>
+                          <div><div className="text-2xl font-black text-on-surface">8</div><div className="text-[9px] font-black uppercase tracking-widest opacity-90">LGAs</div></div>
                         </div>
                         <button onClick={() => setViewMode("details")} className="px-8 py-5 bg-[#a43700] text-white rounded-2xl font-black uppercase tracking-widest text-xs flex items-center justify-center gap-3 hover:scale-105 transition-all shadow-lg shadow-primary/20">
                           Explore Field Data <ArrowRight size={18} />
@@ -1058,11 +1058,11 @@ export default function Dashboard() {
                     </div>
                     <div className="flex gap-12 mt-8">
                       <div>
-                        <div className="text-xs font-black uppercase tracking-widest opacity-60 mb-1">Total Coverage</div>
+                        <div className="text-xs font-black uppercase tracking-widest opacity-90 mb-1">Total Coverage</div>
                         <div className="text-3xl font-black text-secondary">112 Schools</div>
                       </div>
                       <div>
-                        <div className="text-xs font-black uppercase tracking-widest opacity-60 mb-1">Staff Attendance</div>
+                        <div className="text-xs font-black uppercase tracking-widest opacity-90 mb-1">Staff Attendance</div>
                         <div className="text-3xl font-black text-primary">90.3%</div>
                       </div>
                     </div>
@@ -1082,7 +1082,7 @@ export default function Dashboard() {
                 <div className="p-6 md:p-10 flex flex-col justify-center flex-1">
                   <div className="flex items-center gap-3 mb-4">
                     <span className="px-2 py-0.5 bg-orange-100 text-orange-700 text-[10px] font-black uppercase tracking-widest rounded">Field Reach</span>
-                    <span className="text-[10px] font-bold text-on-surface-variant/40 uppercase tracking-widest">• H1 2024 Report</span>
+                    <span className="text-[10px] font-bold text-on-surface-variant/75 uppercase tracking-widest">• H1 2024 Report</span>
                   </div>
                   <h3 className="text-3xl font-black text-on-surface leading-tight mb-4">
                     State-wide Field Monitoring Reach Expands to 112 Primary Schools
@@ -1123,8 +1123,8 @@ export default function Dashboard() {
                         <h2 className="text-4xl font-black leading-tight text-on-surface mb-6">World-Class Trainer <br/>Network</h2>
                         <p className="text-on-surface-variant font-medium text-lg leading-relaxed mb-10">Empowering 7,454 educators with digital tools and international-standard pedagogical training.</p>
                         <div className="grid grid-cols-2 gap-8 mb-10">
-                          <div><div className="text-3xl font-black text-secondary">7,454</div><div className="text-[10px] font-black uppercase tracking-widest opacity-60">Certified</div></div>
-                          <div><div className="text-3xl font-black text-on-surface">2,200</div><div className="text-[10px] font-black uppercase tracking-widest opacity-60">Trainers</div></div>
+                          <div><div className="text-3xl font-black text-secondary">7,454</div><div className="text-[10px] font-black uppercase tracking-widest opacity-90">Certified</div></div>
+                          <div><div className="text-3xl font-black text-on-surface">2,200</div><div className="text-[10px] font-black uppercase tracking-widest opacity-90">Trainers</div></div>
                         </div>
                         <button onClick={() => setViewMode("details")} className="px-8 py-5 bg-[#1b6d24] text-white rounded-2xl font-black uppercase tracking-widest text-xs flex items-center justify-center gap-3 hover:scale-105 transition-all shadow-lg shadow-secondary/20">
                           View Personnel Directory <ArrowRight size={18} />
@@ -1145,7 +1145,7 @@ export default function Dashboard() {
                   <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                 <div className="bg-on-surface text-white p-6 rounded-2xl shadow-lg border-4 border-white">
                   <div className="text-4xl font-black">{metrics.personnel.stats.total.toLocaleString()}</div>
-                  <div className="text-[10px] font-black uppercase tracking-widest opacity-60">Total Trainers</div>
+                  <div className="text-[10px] font-black uppercase tracking-widest opacity-90">Total Trainers</div>
                 </div>
                 <div className="bg-white border border-outline-variant p-6 rounded-2xl shadow-sm">
                   <div className="text-3xl font-black text-secondary">{metrics.personnel.stats.lmts}</div>
@@ -1336,7 +1336,7 @@ export default function Dashboard() {
                 <div className="p-6 md:p-10 flex flex-col justify-center flex-1">
                   <div className="flex items-center gap-3 mb-4">
                     <span className="px-2 py-0.5 bg-green-100 text-green-700 text-[10px] font-black uppercase tracking-widest rounded">Human Capital</span>
-                    <span className="text-[10px] font-bold text-on-surface-variant/40 uppercase tracking-widest">• Certified Trainers</span>
+                    <span className="text-[10px] font-bold text-on-surface-variant/75 uppercase tracking-widest">• Certified Trainers</span>
                   </div>
                   <h3 className="text-3xl font-black text-on-surface leading-tight mb-4">
                     Scaling Global Expertise: 7,454 Educators Fully Certified
@@ -1393,11 +1393,11 @@ export default function Dashboard() {
                 </div>
                 <div className="space-y-4 md:space-y-6 mt-6 md:mt-0">
                   <div>
-                    <div className="text-[10px] font-black uppercase tracking-widest opacity-60 mb-1">Status</div>
+                    <div className="text-[10px] font-black uppercase tracking-widest opacity-90 mb-1">Status</div>
                     <div className="text-lg md:text-xl font-bold">Pilot Completed</div>
                   </div>
                   <div>
-                    <div className="text-[10px] font-black uppercase tracking-widest opacity-60 mb-1">Coverage</div>
+                    <div className="text-[10px] font-black uppercase tracking-widest opacity-90 mb-1">Coverage</div>
                     <div className="text-lg md:text-xl font-bold">8 LGAs Verified</div>
                   </div>
                 </div>
@@ -1484,11 +1484,11 @@ export default function Dashboard() {
                 </div>
                 <div className="space-y-4 md:space-y-6 mt-6 md:mt-0">
                   <div>
-                    <div className="text-[10px] font-black uppercase tracking-widest opacity-60 mb-1">Total Assets</div>
+                    <div className="text-[10px] font-black uppercase tracking-widest opacity-90 mb-1">Total Assets</div>
                     <div className="text-lg md:text-xl font-bold">28,062 / 38,833</div>
                   </div>
                   <div>
-                    <div className="text-[10px] font-black uppercase tracking-widest opacity-60 mb-1">Efficiency</div>
+                    <div className="text-[10px] font-black uppercase tracking-widest opacity-90 mb-1">Efficiency</div>
                     <div className="text-lg md:text-xl font-bold">72% Completed</div>
                   </div>
                 </div>
@@ -1596,11 +1596,11 @@ export default function Dashboard() {
                 </div>
                 <div className="space-y-4 md:space-y-6 mt-6 md:mt-0">
                   <div>
-                    <div className="text-[10px] font-black uppercase tracking-widest opacity-60 mb-1">Total Visits</div>
+                    <div className="text-[10px] font-black uppercase tracking-widest opacity-90 mb-1">Total Visits</div>
                     <div className="text-lg md:text-xl font-bold">112 Verified Sessions</div>
                   </div>
                   <div>
-                    <div className="text-[10px] font-black uppercase tracking-widest opacity-60 mb-1">Impact</div>
+                    <div className="text-[10px] font-black uppercase tracking-widest opacity-90 mb-1">Impact</div>
                     <div className="text-lg md:text-xl font-bold">31,660 Students Reached</div>
                   </div>
                 </div>
@@ -1690,11 +1690,11 @@ export default function Dashboard() {
                 </div>
                 <div className="flex md:flex-col gap-6 md:gap-8 mt-6 md:mt-0 pt-6 border-t border-white/10">
                   <div className="flex-1">
-                    <div className="text-[10px] font-black uppercase tracking-widest opacity-60 mb-1">Active Force</div>
+                    <div className="text-[10px] font-black uppercase tracking-widest opacity-90 mb-1">Active Force</div>
                     <div className="text-lg md:text-xl font-bold">7,454 Personnel</div>
                   </div>
                   <div className="flex-1">
-                    <div className="text-[10px] font-black uppercase tracking-widest opacity-60 mb-1">Zone Reach</div>
+                    <div className="text-[10px] font-black uppercase tracking-widest opacity-90 mb-1">Zone Reach</div>
                     <div className="text-lg md:text-xl font-bold">8 Pilot LGAs</div>
                   </div>
                 </div>
@@ -1779,7 +1779,7 @@ export default function Dashboard() {
                        <CheckCircle size={80} />
                     </div>
                     <div className="relative z-10">
-                      <div className="text-[10px] font-black uppercase tracking-widest opacity-60 mb-2">Classroom Implementation</div>
+                      <div className="text-[10px] font-black uppercase tracking-widest opacity-90 mb-2">Classroom Implementation</div>
                       <div className="text-3xl font-black mb-4">{(metrics as any).impact.classroom.skillApplication}%</div>
                       <p className="text-sm text-white/70 font-medium leading-relaxed">
                         Of observed teachers demonstrated consistent use of new skills, with strongest performance in teacher-learner interactions (69.8%).

@@ -71,7 +71,7 @@ export default function ImpactReportPage() {
                 </div>
                 <div className="text-4xl font-black text-on-surface mb-1">{stat.value}</div>
                 <div className="text-sm font-bold text-on-surface uppercase tracking-widest mb-1">{stat.label}</div>
-                <div className="text-xs font-medium text-on-surface-variant opacity-60">{stat.sub}</div>
+                <div className="text-xs font-medium text-on-surface-variant opacity-90">{stat.sub}</div>
               </motion.div>
             ))}
           </div>
@@ -92,8 +92,8 @@ export default function ImpactReportPage() {
             <div className="space-y-6">
                <div className="flex items-center gap-4 md:gap-6 p-4 md:p-6 bg-white border border-red-100 rounded-2xl">
                   <div className="text-center shrink-0">
-                    <div className="text-[10px] font-black text-red-500 uppercase mb-1">Pre</div>
-                    <div className="text-xl md:text-2xl font-bold text-red-500 opacity-60">58.4%</div>
+                    <div className="text-[10px] font-black text-red-700 uppercase mb-1">Pre</div>
+                    <div className="text-xl md:text-2xl font-bold text-red-700 opacity-90">58.4%</div>
                   </div>
                   <div className="flex-1 h-3 bg-red-50 rounded-full overflow-hidden">
                     <motion.div 
@@ -144,7 +144,7 @@ export default function ImpactReportPage() {
                     <div className="absolute inset-0 flex flex-col justify-between">
                         {[100, 75, 50, 25, 0].map(val => (
                             <div key={val} className={`w-full flex items-center relative ${val === 0 ? "border-t-2 border-on-surface" : "border-t border-outline-variant/30"}`}>
-                                <span className="absolute -left-8 text-[10px] font-bold text-on-surface-variant/40">{val}</span>
+                                <span className="absolute -left-8 text-[10px] font-bold text-on-surface-variant/75">{val}</span>
                             </div>
                         ))}
                     </div>
@@ -223,7 +223,7 @@ export default function ImpactReportPage() {
                 </div>
 
                 <div className="relative flex gap-12">
-                    <div className="hidden md:flex flex-col justify-between h-64 text-[10px] font-black text-on-surface-variant/40 pr-4 border-r border-outline-variant/30">
+                    <div className="hidden md:flex flex-col justify-between h-64 text-[10px] font-black text-on-surface-variant/75 pr-4 border-r border-outline-variant/30">
                         <span>200</span>
                         <span>150</span>
                         <span>100</span>
@@ -337,7 +337,7 @@ export default function ImpactReportPage() {
                             <tr>
                                 <td className="px-8 py-6">
                                     <div className="font-bold text-on-surface">3rd Term 2024/2025</div>
-                                    <div className="text-[10px] font-black uppercase text-primary opacity-60">Initiation Phase</div>
+                                    <div className="text-[10px] font-black uppercase text-primary opacity-90">Initiation Phase</div>
                                 </td>
                                 <td className="px-8 py-6 text-center font-bold">30</td>
                                 <td className="px-8 py-6 text-center font-bold">42</td>
@@ -485,7 +485,7 @@ export default function ImpactReportPage() {
               whileHover={{ y: -5, scale: 1.02 }}
               className="bg-primary text-white p-8 rounded-[2rem] shadow-2xl border-4 border-white z-10 w-full max-w-sm text-center cursor-pointer"
             >
-              <div className="text-xs font-black uppercase tracking-[0.3em] mb-2 opacity-60">Level 01</div>
+              <div className="text-xs font-black uppercase tracking-[0.3em] mb-2 opacity-90">Level 01</div>
               <h4 className="text-2xl font-black mb-1 text-white">Ministry / ERIT</h4>
               <p className="text-sm font-medium opacity-80">Strategic oversight & content development</p>
             </motion.div>
@@ -523,7 +523,7 @@ export default function ImpactReportPage() {
               transition={{ boxShadow: { repeat: Infinity, duration: 2 } }}
               className="bg-[#1b6d24] text-white p-10 rounded-[3rem] shadow-2xl border-4 border-white z-10 w-full max-w-md text-center cursor-pointer"
             >
-              <div className="text-xs font-black uppercase tracking-[0.3em] mb-4 opacity-60">Impact Point</div>
+              <div className="text-xs font-black uppercase tracking-[0.3em] mb-4 opacity-90">Impact Point</div>
               <h4 className="text-4xl font-black mb-2 text-white italic">The Classroom</h4>
               <p className="text-base font-medium opacity-90">Sustainable learner-centred instruction</p>
             </motion.div>
@@ -558,7 +558,7 @@ export default function ImpactReportPage() {
                 </p>
                 <cite className="block mt-6 not-italic">
                   <span className="block font-black text-on-surface uppercase tracking-widest text-sm">Mrs. Emmanuel Nnenna Julianna</span>
-                  <span className="text-xs font-bold text-on-surface-variant opacity-60 uppercase">Ohokobe Umuohu Primary School</span>
+                  <span className="text-xs font-bold text-on-surface-variant opacity-90 uppercase">Ohokobe Umuohu Primary School</span>
                 </cite>
               </blockquote>
 
@@ -582,17 +582,17 @@ export default function ImpactReportPage() {
               <div className="p-8 border border-white/10 rounded-3xl space-y-4">
                  <div className="text-primary font-black text-2xl uppercase tracking-[0.2em]">01</div>
                  <h4 className="text-2xl font-bold">Infrastructure</h4>
-                 <p className="text-white/40 leading-relaxed">Addressing overcrowded classrooms, inadequate furniture, and decaying structures to create an enabling environment for learner-centred pedagogy.</p>
+                 <p className="text-white/75 leading-relaxed">Addressing overcrowded classrooms, inadequate furniture, and decaying structures to create an enabling environment for learner-centred pedagogy.</p>
               </div>
               <div className="p-8 border border-white/10 rounded-3xl space-y-4">
                  <div className="text-primary font-black text-2xl uppercase tracking-[0.2em]">02</div>
                  <h4 className="text-2xl font-bold">Digital Access</h4>
-                 <p className="text-white/40 leading-relaxed">Expanding access to smartphones, reliable data, and high-speed internet connectivity for both teachers and monitoring personnel.</p>
+                 <p className="text-white/75 leading-relaxed">Expanding access to smartphones, reliable data, and high-speed internet connectivity for both teachers and monitoring personnel.</p>
               </div>
               <div className="p-8 border border-white/10 rounded-3xl space-y-4">
                  <div className="text-primary font-black text-2xl uppercase tracking-[0.2em]">03</div>
                  <h4 className="text-2xl font-bold">System Reform</h4>
-                 <p className="text-white/40 leading-relaxed">Moving from manual results management to digital compilation processes to enhance data-driven decision-making at the state level.</p>
+                 <p className="text-white/75 leading-relaxed">Moving from manual results management to digital compilation processes to enhance data-driven decision-making at the state level.</p>
               </div>
            </div>
 
