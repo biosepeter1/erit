@@ -14,12 +14,12 @@ function cn(...inputs: ClassValue[]) {
 }
 
 const navLinks = [
-  { name: "Govt Mandate", href: "/" },
+  { name: "Mandate", href: "/" },
   { name: "Dashboard", href: "/dashboard" },
-  { name: "Project", href: "/projects" },
-  { name: "Impact Report", href: "/impact-report" },
+  { name: "Programs", href: "/projects" },
   { name: "Community", href: "/community" },
   { name: "Partnerships", href: "/partnerships" },
+  { name: "Impact Report", href: "/impact-report" },
 ];
 
 export default function Navbar() {
@@ -66,13 +66,15 @@ export default function Navbar() {
           })}
         </div>
         <div className="flex items-center gap-4">
-          <Link
-            href="/contact"
+          <a
+            href="https://eriteam.org/contact/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="hidden sm:block bg-primary text-white px-6 py-2.5 font-bold uppercase tracking-wider rounded-lg shadow-md hover:bg-primary-container transition-all text-sm"
             style={{ backgroundColor: "#a43700" }}
           >
             Get Involved
-          </Link>
+          </a>
           <button 
             className="md:hidden p-2 text-on-surface-variant hover:text-primary transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -107,14 +109,16 @@ export default function Navbar() {
                 </Link>
               );
             })}
-            <Link
-              href="/contact"
+            <a
+              href="https://eriteam.org/contact/"
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => setIsMobileMenuOpen(false)}
               className="bg-primary text-white text-center px-6 py-4 mt-4 font-bold uppercase tracking-wider rounded-xl shadow-md w-full"
               style={{ backgroundColor: "#a43700" }}
             >
               Get Involved
-            </Link>
+            </a>
           </motion.div>
         )}
       </AnimatePresence>

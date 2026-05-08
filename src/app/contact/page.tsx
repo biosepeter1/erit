@@ -63,14 +63,22 @@ export default function ContactPage() {
               },
               { 
                 title: "Email Address", 
-                content: <a href="mailto:basicandsecondaryeducation@abiastate.gov.ng" className="hover:underline break-all">basicandsecondaryeducation@abiastate.gov.ng</a>, 
+                content: <a href="mailto:admin@eriteam.org" className="hover:underline break-all">admin@eriteam.org</a>, 
                 icon: <Mail size={28} />, 
                 delay: 0.2,
                 sub: "Official correspondence only."
               },
               { 
-                title: "Phone Number", 
-                content: <a href="tel:+2349134447066" className="text-2xl font-bold">0913 444 7066</a>, 
+                title: "Phone Numbers", 
+                content: (
+                  <div className="flex flex-col gap-3">
+                    <a href="tel:+2347030625898" className="text-xl font-bold hover:text-secondary transition-colors">+234 703 062 5898</a>
+                    <a href="tel:+2347032934688" className="text-xl font-bold hover:text-secondary transition-colors">+234 703 293 4688</a>
+                    <a href="tel:+2347035685894" className="text-xl font-bold hover:text-secondary transition-colors">+234 703 568 5894</a>
+                    <a href="tel:+2348038751415" className="text-xl font-bold hover:text-secondary transition-colors">+234 8038751415</a>
+                    <a href="tel:+2348036481475" className="text-xl font-bold hover:text-secondary transition-colors">+234 803 648 1475</a>
+                  </div>
+                ), 
                 icon: <Phone size={28} />, 
                 delay: 0.3,
                 sub: "Available Mon - Fri, 8:00 AM - 5:00 PM"

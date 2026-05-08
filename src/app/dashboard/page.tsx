@@ -108,10 +108,10 @@ export default function Dashboard() {
                   <div className="flex flex-col lg:flex-row min-h-[500px]">
                     <div className="lg:w-1/2 relative h-[300px] lg:h-auto border-r border-outline-variant/30">
                       <img src="/pdf_images/page_18_img_1.jpeg" className="absolute inset-0 w-full h-full object-cover" alt="AbiaFIRST Transformation" />
-                      <div className="absolute inset-0 bg-primary/10 mix-blend-multiply" />
-                      <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10 text-white">
+                      <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]" />
+                      <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10 text-white z-10">
                         <div className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em] mb-2 opacity-80">Strategic Mission</div>
-                        <h2 className="text-3xl md:text-4xl font-black leading-tight">Total Ecosystem <br/>Transformation</h2>
+                        <h2 className="text-3xl md:text-4xl font-black leading-tight drop-shadow-2xl">Total Ecosystem <br/>Transformation</h2>
                       </div>
                     </div>
                     <div className="lg:w-1/2 p-6 md:p-16 flex flex-col justify-center bg-surface-container-low">

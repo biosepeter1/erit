@@ -23,73 +23,60 @@ export default function CommunityPage() {
 
   return (
     <div className="bg-pattern min-h-screen pb-20">
-      {/* Hero Section */}
-      <section className="relative h-[500px] md:h-[650px] w-full overflow-hidden bg-surface-container-low">
-        <AnimatePresence mode="wait">
+      {/* Hero Carousel Section */}
+      <section className="relative h-[60vh] md:h-[70vh] min-h-[500px] md:min-h-[600px] overflow-hidden flex items-center justify-center bg-black">
+        <AnimatePresence initial={false}>
           <motion.div
             key={currentSlide}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={{ opacity: 0, scale: 1 }}
+            animate={{ opacity: 1, scale: 1.05 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1 }}
-            className="absolute inset-0"
+            transition={{ 
+              opacity: { duration: 1, ease: "easeInOut" },
+              scale: { duration: 5, ease: "linear" } 
+            }}
+            className="absolute inset-0 z-0"
           >
-            <Image
-              src={carouselImages[currentSlide].src}
-              alt={carouselImages[currentSlide].alt}
-              fill
-              sizes="100vw"
-              className="object-cover"
+            <Image 
+              src={carouselImages[currentSlide].src} 
+              alt={carouselImages[currentSlide].alt} 
+              fill 
+              className="object-cover brightness-[0.4] transform-gpu"
               priority
+              sizes="100vw"
+              loading="eager"
             />
-            <div className="absolute inset-0 bg-black/40 z-10" />
           </motion.div>
         </AnimatePresence>
+        
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 z-10" />
 
-        <div className="relative z-20 h-full max-w-7xl mx-auto px-6 flex flex-col justify-center items-start">
-          <motion.span
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="inline-block px-4 py-1.5 bg-secondary-container text-on-secondary-container font-bold text-xs rounded-full mb-6 uppercase tracking-widest"
-          >
-            Community Engagement
-          </motion.span>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-3xl md:text-6xl font-extrabold text-white mb-6 md:mb-8 max-w-2xl leading-tight"
-          >
-            Building the Future Together
-          </motion.h1>
-          <motion.p
+        <div className="relative z-20 text-center px-6 w-full">
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-base md:text-lg text-white/90 mb-8 md:mb-10 max-w-xl leading-relaxed"
           >
-            Strengthening governance and local support through active participation. Join our School-Based Management Committee to directly impact the quality of education in your local community.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="flex flex-wrap gap-4"
-          >
-            <button className="bg-primary text-white px-8 py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-primary-container transition-all shadow-xl">
-              Join the Community
-            </button>
+            <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-[10rem] font-black text-white tracking-widest uppercase leading-none mb-4 md:mb-6">
+              Community
+            </h1>
+            <div className="flex items-center justify-center gap-3 md:gap-4 text-white/60 font-bold uppercase tracking-[0.2em] md:tracking-[0.4em] text-[10px] md:text-xs">
+              <span className="w-8 md:w-12 h-[1px] bg-white/20" />
+              Building the Future Together
+              <span className="w-8 md:w-12 h-[1px] bg-white/20" />
+            </div>
           </motion.div>
         </div>
 
-        {/* Carousel Controls */}
-        <div className="absolute bottom-8 right-8 z-30 flex gap-2">
+        {/* Carousel Indicators */}
+        <div className="absolute bottom-8 md:bottom-12 left-1/2 -translate-x-1/2 z-30 flex gap-2 md:gap-3">
           {carouselImages.map((_, i) => (
             <button
               key={i}
               onClick={() => setCurrentSlide(i)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${currentSlide === i ? "bg-primary w-8" : "bg-white/40"
-                }`}
+              className={`h-1 md:h-1.5 transition-all duration-500 rounded-full ${
+                currentSlide === i ? "w-8 md:w-12 bg-white" : "w-2 md:w-3 bg-white/30"
+              }`}
             />
           ))}
         </div>
@@ -137,7 +124,7 @@ export default function CommunityPage() {
                 <div className="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center text-secondary mb-6">
                   <Handshake size={24} />
                 </div>
-                <h3 className="text-2xl font-bold mb-4">The Farm Produce Project</h3>
+                <h3 className="text-2xl font-bold mb-4">The Farm Produce Program</h3>
                 <p className="text-on-surface-variant mb-6 leading-relaxed">In Aba South, students are learning agricultural science through direct application. The community donated seeds and tools.</p>
               </div>
               <div className="bg-white border border-outline-variant rounded-2xl p-8 shadow-sm border-l-8 border-l-primary flex-1 hover:shadow-lg transition-all">
@@ -254,9 +241,9 @@ export default function CommunityPage() {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { title: "Mentorship", desc: "Share your professional journey and inspire the next generation of Abia leaders.", icon: <Handshake />, color: "primary", action: "Apply to Mentor", link: "/contact" },
-              { title: "Resources", desc: "From books to sports equipment, your contributions directly enhance the school experience.", icon: <Package />, color: "secondary", action: "See Wishlist", link: "/contact" },
-              { title: "Funding", desc: "Contribute to specific school infrastructure projects through transparent tracking.", icon: <CreditCard />, color: "tertiary", action: "Donate Now", link: "/contact" }
+              { title: "Mentorship", desc: "Share your professional journey and inspire the next generation of Abia leaders.", icon: <Handshake />, color: "primary", action: "Apply to Mentor", link: "https://eriteam.org/contact/" },
+              { title: "Resources", desc: "From books to sports equipment, your contributions directly enhance the school experience.", icon: <Package />, color: "secondary", action: "See Wishlist", link: "https://eriteam.org/contact/" },
+              { title: "Funding", desc: "Contribute to specific school infrastructure programs through transparent tracking.", icon: <CreditCard />, color: "tertiary", action: "Donate Now", link: "https://eriteam.org/contact/" }
             ].map((item, i) => (
               <div key={i} className="bg-white border border-outline-variant p-6 md:p-10 rounded-2xl text-center group hover:shadow-2xl transition-all duration-500 flex flex-col">
                 <div className={`w-20 h-20 md:w-24 md:h-24 bg-surface-container-low rounded-3xl flex items-center justify-center mx-auto mb-6 md:mb-8 group-hover:scale-110 transition-transform text-${item.color}`}>
@@ -264,13 +251,15 @@ export default function CommunityPage() {
                 </div>
                 <h3 className="text-xl md:text-2xl font-bold mb-4">{item.title}</h3>
                 <p className="text-sm md:text-base text-on-surface-variant mb-6 md:mb-8 leading-relaxed flex-1">{item.desc}</p>
-                <Link 
+                <a 
                   href={item.link} 
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-full block text-center py-4 text-white font-bold rounded-xl uppercase tracking-widest text-xs shadow-lg hover:brightness-110 transition-all"
                   style={{ backgroundColor: `var(--color-${item.color})` }}
                 >
                   {item.action}
-                </Link>
+                </a>
               </div>
             ))}
           </div>

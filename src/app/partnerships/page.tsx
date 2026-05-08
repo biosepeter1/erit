@@ -31,9 +31,14 @@ export default function PartnershipsPage() {
               <button className="bg-[#a43700] text-white px-6 py-3 font-bold text-xs uppercase tracking-widest hover:brightness-110 transition-all rounded shadow-lg shadow-[#a43700]/30">
                 What we do
               </button>
-              <button className="bg-[#c29858] text-white px-6 py-3 font-bold text-xs uppercase tracking-widest hover:brightness-110 transition-all rounded shadow-lg shadow-[#c29858]/30">
+              <a 
+                href="https://eriteam.org/contact/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="bg-[#c29858] text-white px-6 py-3 font-bold text-xs uppercase tracking-widest hover:brightness-110 transition-all rounded shadow-lg shadow-[#c29858]/30 flex items-center justify-center"
+              >
                 Donate Now
-              </button>
+              </a>
             </div>
           </motion.div>
 

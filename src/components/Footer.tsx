@@ -15,18 +15,28 @@ export default function Footer() {
           <p className="font-bold text-sm text-on-surface mb-4">Quick Links</p>
           <ul className="space-y-3 text-sm text-on-surface-variant">
             <li>
-              <Link href="/contact" className="hover:text-primary transition-colors flex items-center gap-2">
+              <a href="https://eriteam.org/contact/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors flex items-center gap-2">
                 Contact Us
-              </Link>
-            </li>
-            <li>
-              <a href="mailto:basicandsecondaryeducation@abiastate.gov.ng" className="hover:text-primary transition-colors flex items-center gap-2">
-                <Mail size={14} /> Email Support
               </a>
             </li>
             <li>
-              <a href="tel:+2349134447066" className="hover:text-primary transition-colors flex items-center gap-2">
-                <Phone size={14} /> 0913 444 7066
+              <a href="mailto:admin@eriteam.org" className="hover:text-primary transition-colors flex items-center gap-2">
+                <Mail size={14} /> admin@eriteam.org
+              </a>
+            </li>
+            <li>
+              <a href="tel:+2347030625898" className="hover:text-primary transition-colors flex items-center gap-2">
+                <Phone size={14} /> +234 703 062 5898
+              </a>
+            </li>
+            <li>
+              <a href="tel:+2347032934688" className="hover:text-primary transition-colors flex items-center gap-2">
+                <Phone size={14} /> +234 703 293 4688
+              </a>
+            </li>
+            <li>
+              <a href="tel:+2348036481475" className="hover:text-primary transition-colors flex items-center gap-2">
+                <Phone size={14} /> +234 803 648 1475
               </a>
             </li>
           </ul>
@@ -50,21 +60,21 @@ export default function Footer() {
           <p className="font-bold text-sm text-on-surface mb-4">Support</p>
           <ul className="space-y-3 text-sm text-on-surface-variant">
             <li>
-              <Link href="#" className="hover:text-primary transition-colors">
-                Educational Resources
-              </Link>
+              <a href="tel:+2347035685894" className="hover:text-primary transition-colors flex items-center gap-2">
+                <Phone size={14} /> +234 703 568 5894
+              </a>
             </li>
             <li>
-              <Link href="#" className="hover:text-primary transition-colors">
-                Help Center
-              </Link>
+              <a href="tel:+2348038751415" className="hover:text-primary transition-colors flex items-center gap-2">
+                <Phone size={14} /> +234 8038751415
+              </a>
             </li>
           </ul>
         </div>
       </div>
       <div className="max-w-7xl mx-auto px-6 pt-6 border-t border-outline-variant/30 text-center">
         <p className="text-[10px] text-on-surface-variant uppercase tracking-[0.2em] opacity-60">
-          © {new Date().getFullYear()} Abia State Ministry of Basic and Secondary Education. All rights reserved.
+          © {new Date().getFullYear()} Ministry of basic and Secondary Education Abia State. All rights reserved.
         </p>
       </div>
     </footer>

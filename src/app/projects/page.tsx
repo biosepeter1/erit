@@ -47,7 +47,7 @@ const carouselImages = [
   teacherImages[14],
 ];
 
-export default function ProjectsPage() {
+export default function ProgramsPage() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [visibleTeacherImages, setVisibleTeacherImages] = useState(6);
   const [visibleSchoolImages, setVisibleSchoolImages] = useState(6);
@@ -112,7 +112,7 @@ export default function ProjectsPage() {
             >
               <Image 
                 src={selectedImage} 
-                alt="Selected Project" 
+                alt="Selected Program" 
                 fill 
                 className="object-contain transform-gpu"
                 sizes="100vw"
@@ -158,7 +158,7 @@ export default function ProjectsPage() {
             transition={{ delay: 0.2 }}
           >
             <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-[12rem] font-black text-white tracking-widest uppercase leading-none mb-4 md:mb-6">
-              Projects
+              Programs
             </h1>
             <div className="flex items-center justify-center gap-3 md:gap-4 text-white/60 font-bold uppercase tracking-[0.2em] md:tracking-[0.4em] text-[10px] md:text-xs">
               <span className="w-8 md:w-12 h-[1px] bg-white/20" />
@@ -186,7 +186,7 @@ export default function ProjectsPage() {
       <section className="py-16 md:py-24 max-w-7xl mx-auto px-6">
         <div className="text-center mb-12 md:mb-20">
           <h2 className="text-3xl md:text-5xl font-black text-[#1b1c1c] mb-4 md:mb-6 leading-tight">
-            Teacher and Leadership Transformation Projects
+            Teacher and Leadership Transformation Programs
           </h2>
           <p className="text-primary font-bold italic mb-4 md:mb-6 text-sm md:text-base">Reimagining the teacher’s journey.</p>
           <p className="text-[#5a4138] max-w-2xl mx-auto font-medium leading-relaxed text-sm md:text-base">
@@ -203,7 +203,7 @@ export default function ProjectsPage() {
               transition={{ delay: (i % 3) * 0.05 }}
               key={src}
             >
-              <ProjectImage 
+              <ProgramImage 
                 src={src} 
                 height={i % 3 === 1 ? "h-[350px] md:h-[500px]" : "h-[300px] md:h-[400px]"} 
                 onClick={() => setSelectedImage(src)}
@@ -230,7 +230,7 @@ export default function ProjectsPage() {
         <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-12 md:mb-20">
               <h2 className="text-3xl md:text-5xl font-black text-[#1b1c1c] mb-4 md:mb-6 leading-tight">
-                  School Transformation & Remodelling Projects
+                  School Transformation & Remodelling Programs
               </h2>
               <p className="text-secondary font-bold italic mb-4 md:mb-6 text-sm md:text-base">Modern, inclusive, and child-friendly learning environments.</p>
               <p className="text-[#5a4138] max-w-2xl mx-auto font-medium leading-relaxed text-sm md:text-base">
@@ -247,7 +247,7 @@ export default function ProjectsPage() {
                   transition={{ delay: (i % 3) * 0.05 }}
                   key={src}
                 >
-                  <ProjectImage 
+                  <ProgramImage 
                     src={src} 
                     height={i % 2 === 0 ? "h-[320px] md:h-[450px]" : "h-[280px] md:h-[350px]"} 
                     onClick={() => setSelectedImage(src)}
@@ -273,7 +273,7 @@ export default function ProjectsPage() {
   );
 }
 
-function ProjectImage({ src, height, onClick, priority }: { src: string, height: string, onClick: () => void, priority?: boolean }) {
+function ProgramImage({ src, height, onClick, priority }: { src: string, height: string, onClick: () => void, priority?: boolean }) {
     return (
         <motion.div 
             whileHover={{ y: -6 }}
@@ -282,7 +282,7 @@ function ProjectImage({ src, height, onClick, priority }: { src: string, height:
         >
             <Image 
                 src={src} 
-                alt="Project Image" 
+                alt="Program Image" 
                 fill 
                 className="object-cover transition-transform duration-700 group-hover:scale-105 transform-gpu"
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
