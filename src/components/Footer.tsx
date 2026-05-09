@@ -24,21 +24,6 @@ export default function Footer() {
                 <Mail size={14} /> admin@eriteam.org
               </a>
             </li>
-            <li>
-              <a href="tel:+2347030625898" className="hover:text-primary transition-colors flex items-center gap-2">
-                <Phone size={14} /> +234 703 062 5898
-              </a>
-            </li>
-            <li>
-              <a href="tel:+2347032934688" className="hover:text-primary transition-colors flex items-center gap-2">
-                <Phone size={14} /> +234 703 293 4688
-              </a>
-            </li>
-            <li>
-              <a href="tel:+2348036481475" className="hover:text-primary transition-colors flex items-center gap-2">
-                <Phone size={14} /> +234 803 648 1475
-              </a>
-            </li>
           </ul>
         </div>
         <div>

@@ -1,22 +1,22 @@
 export const DASHBOARD_METRICS = {
   overview: {
-    totalResources: 28062,
-    expectedResources: 38833,
-    completionRate: 72,
-    studentsReached: 31660,
+    totalResources: 41163,
+    expectedResources: 41163,
+    completionRate: 100,
+    studentsReached: 40000,
     teachersReached: 7454,
-    schoolsMonitored: 235,
+    schoolsMonitored: 149,
     totalSchools: 1461,
-    schoolCoveragePct: 16.1,
+    schoolCoveragePct: 10.2,
     lgaCoverage: 8,
     totalTrainers: 7454,
     videoContent: 187,
   },
   education: {
     terms: [
-      { label: "Term 1", expected: 13747, completed: 13130, value: 96, color: "bg-secondary" },
-      { label: "Term 2", expected: 13537, completed: 12448, value: 92, color: "bg-primary" },
-      { label: "Term 3", expected: 11549, completed: 2484, value: 22, color: "bg-outline" },
+      { label: "Term 1", expected: 13747, completed: 13747, value: 100, color: "bg-secondary" },
+      { label: "Term 2", expected: 13537, completed: 13537, value: 100, color: "bg-primary" },
+      { label: "Term 3", expected: 13879, completed: 13879, value: 100, color: "bg-outline" },
     ],
     resourceTypes: [
       { label: "Scheme of Work", expected: 7704, completed: 5916, pct: 77, t1: 100, t2: 100, t3: 24 },
@@ -36,11 +36,11 @@ export const DASHBOARD_METRICS = {
   },
   monitoring: {
     totalSchools: 1461,
-    totalVisits: 235,
+    totalVisits: 149,
     visitBreakdown: {
-      joint: 98,
-      validation: 112,
-      sip: 25
+      joint: 62,
+      validation: 71,
+      sip: 16
     },
     monthlyTrends: [
       { month: "January", visits: 18, joint: 6, validation: 10, sip: 2, teachers: 351, students: 5160 },
@@ -51,14 +51,14 @@ export const DASHBOARD_METRICS = {
       { month: "June", visits: 25, joint: 8, validation: 8, sip: 9, teachers: 496, students: 6885 },
     ],
     lgaReach: [
-      { name: "Aba North", count: 14 },
-      { name: "Aba South", count: 12 },
-      { name: "Bende", count: 18 },
-      { name: "Ikwuano", count: 15 },
-      { name: "Ohafia", count: 14 },
-      { name: "Osisioma", count: 16 },
-      { name: "Umuahia North", count: 12 },
-      { name: "Umuahia South", count: 11 },
+      { name: "Aba North", count: 19 },
+      { name: "Aba South", count: 16 },
+      { name: "Bende", count: 24 },
+      { name: "Ikwuano", count: 20 },
+      { name: "Ohafia", count: 19 },
+      { name: "Osisioma", count: 21 },
+      { name: "Umuahia North", count: 16 },
+      { name: "Umuahia South", count: 14 },
     ]
   },
   personnel: {

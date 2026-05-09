@@ -18,9 +18,10 @@ import {
 import Image from "next/image";
 
 const stats = [
-  { label: "Schools Reached", value: "235", sub: "Oct 2025 - Mar 2026", icon: School, color: "text-primary" },
-  { label: "Total Visits", value: "235", sub: "Monitoring Integrity", icon: CheckCircle2, color: "text-secondary" },
+  { label: "Schools Reached", value: "149", sub: "Oct 2025 - Mar 2026", icon: School, color: "text-primary" },
+  { label: "Learning Gain", value: "21%", sub: "Assessment Improvement", icon: BarChart3, color: "text-secondary" },
   { label: "Educators Trained", value: "7,454", sub: "MTs & Lead MTs", icon: Users, color: "text-blue-600" },
+  { label: "Students Reached", value: "40,000+", sub: "Direct Impact", icon: TrendingUp, color: "text-green-600" },
   { label: "Geographic Pilot", value: "8 LGAs", sub: "Strategic Coverage", icon: MapPin, color: "text-orange-500" },
 ];
 
@@ -57,7 +58,7 @@ export default function ImpactReportPage() {
           </motion.div>
 
           {/* Quick Stats Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
             {stats.map((stat, i) => (
               <motion.div
                 key={stat.label}
@@ -86,19 +87,19 @@ export default function ImpactReportPage() {
               Closing the <br />Knowledge Gap
             </h2>
             <p className="text-on-surface-variant text-lg leading-relaxed mb-10">
-              The post-training assessment data indicates a monumental shift in teacher readiness. The average score surged by 33.4 percentage points, transforming the baseline from "developing" to "expert" instructional delivery.
+              The post-training assessment data indicates a monumental shift in teacher readiness. The average score surged by 21 percentage points, transforming the baseline from "developing" to "expert" instructional delivery.
             </p>
 
             <div className="space-y-6">
                <div className="flex items-center gap-4 md:gap-6 p-4 md:p-6 bg-white border border-red-100 rounded-2xl">
                   <div className="text-center shrink-0">
                     <div className="text-[10px] font-black text-red-700 uppercase mb-1">Pre</div>
-                    <div className="text-xl md:text-2xl font-bold text-red-700 opacity-90">58.4%</div>
+                    <div className="text-xl md:text-2xl font-bold text-red-700 opacity-90">53.2%</div>
                   </div>
                   <div className="flex-1 h-3 bg-red-50 rounded-full overflow-hidden">
                     <motion.div 
                       initial={{ width: 0 }}
-                      whileInView={{ width: "58.4%" }}
+                      whileInView={{ width: "53.2%" }}
                       viewport={{ once: true }}
                       transition={{ duration: 1 }}
                       className="h-full bg-red-500"
@@ -109,12 +110,12 @@ export default function ImpactReportPage() {
                <div className="flex items-center gap-4 md:gap-6 p-4 md:p-6 bg-white border-2 border-secondary rounded-2xl shadow-lg shadow-secondary/5">
                   <div className="text-center shrink-0">
                     <div className="text-[10px] font-black text-secondary uppercase mb-1">Post</div>
-                    <div className="text-2xl md:text-3xl font-black text-secondary">91.8%</div>
+                    <div className="text-2xl md:text-3xl font-black text-secondary">74.2%</div>
                   </div>
                   <div className="flex-1 h-3 bg-secondary/10 rounded-full overflow-hidden">
                     <motion.div 
                       initial={{ width: 0 }}
-                      whileInView={{ width: "91.8%" }}
+                      whileInView={{ width: "74.2%" }}
                       viewport={{ once: true }}
                       transition={{ duration: 1.5, delay: 0.5 }}
                       className="h-full bg-secondary"
@@ -348,8 +349,8 @@ export default function ImpactReportPage() {
                                     <div className="font-bold text-on-surface">Oct 2025 – Mar 2026</div>
                                     <div className="text-[10px] font-black uppercase text-secondary">Piloted Scale-up</div>
                                 </td>
-                                <td className="px-8 py-6 text-center font-black text-secondary">235</td>
-                                <td className="px-8 py-6 text-center font-black text-secondary">235</td>
+                                <td className="px-8 py-6 text-center font-black text-secondary">149</td>
+                                <td className="px-8 py-6 text-center font-black text-secondary">149</td>
                                 <td className="px-8 py-6 text-right font-black text-secondary">8</td>
                             </tr>
                         </tbody>
@@ -531,6 +532,80 @@ export default function ImpactReportPage() {
         </div>
       </section>
 
+      {/* 2026 Transformation Milestones */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-col lg:flex-row items-center gap-16">
+            <div className="lg:w-1/2">
+              <div className="inline-block px-3 py-1 bg-secondary/10 text-secondary font-black text-[10px] rounded mb-6 uppercase tracking-widest border border-secondary/20">
+                March 2026 Milestone
+              </div>
+              <h2 className="text-4xl md:text-6xl font-black text-on-surface leading-tight mb-8">
+                The Scale of <br /><span className="text-secondary">Transformation</span>
+              </h2>
+              <p className="text-lg text-on-surface-variant font-medium leading-relaxed mb-10">
+                By March 2026, the AbiaFIRST initiative has evolved from a targeted pilot into a statewide movement, fundamentally altering the educational delivery model across the region.
+              </p>
+              
+              <div className="grid grid-cols-2 gap-8">
+                <div>
+                  <div className="text-4xl font-black text-on-surface mb-2">7,454</div>
+                  <div className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant">Educators Trained</div>
+                  <div className="text-[9px] font-bold text-secondary mt-1">MTs & Lead Trainers</div>
+                </div>
+                <div>
+                  <div className="text-4xl font-black text-on-surface mb-2">149</div>
+                  <div className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant">Verified Schools</div>
+                  <div className="text-[9px] font-bold text-secondary mt-1">On-site Inspections</div>
+                </div>
+                <div>
+                  <div className="text-4xl font-black text-on-surface mb-2">398</div>
+                  <div className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant">Teacher Observations</div>
+                  <div className="text-[9px] font-bold text-secondary mt-1">Instructional Quality</div>
+                </div>
+                <div>
+                  <div className="text-4xl font-black text-on-surface mb-2">97.1%</div>
+                  <div className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant">Skill Application</div>
+                  <div className="text-[9px] font-bold text-secondary mt-1">Consistent Adoption</div>
+                </div>
+              </div>
+            </div>
+            <div className="lg:w-1/2 relative">
+              <div className="absolute -inset-4 bg-secondary/5 rounded-[3rem] blur-2xl" />
+              <div className="relative bg-[#fbf9f8] border border-outline-variant p-8 md:p-12 rounded-[3rem] shadow-xl">
+                <h4 className="text-2xl font-black text-on-surface mb-6 italic">"A technical audit of teacher professional development and instructional transformation."</h4>
+                <div className="space-y-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 rounded-full bg-secondary text-white flex items-center justify-center shrink-0">
+                      <CheckCircle2 size={18} />
+                    </div>
+                    <p className="text-on-surface-variant font-medium leading-relaxed">
+                      <strong>Digital Adoption:</strong> 70% active digital platform usage across verified sessions in Q1 2026.
+                    </p>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 rounded-full bg-secondary text-white flex items-center justify-center shrink-0">
+                      <CheckCircle2 size={18} />
+                    </div>
+                    <p className="text-on-surface-variant font-medium leading-relaxed">
+                      <strong>Cascade Support:</strong> 1,833 teachers participated in localized cascade training sessions within the review period.
+                    </p>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 rounded-full bg-secondary text-white flex items-center justify-center shrink-0">
+                      <CheckCircle2 size={18} />
+                    </div>
+                    <p className="text-on-surface-variant font-medium leading-relaxed">
+                      <strong>LGA Coverage:</strong> Fully operational school improvement systems active in 8 priority LGAs.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Testimonials - The Human Story */}
       <section className="py-24 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
@@ -600,6 +675,31 @@ export default function ImpactReportPage() {
               <h3 className="text-3xl font-black mb-8 italic">"Building a resilient and high-performing education system for all learners."</h3>
               <p className="text-xs font-black uppercase tracking-[0.4em] opacity-40">— Elder Goodluck Chinedu Ubochi, Honourable Commissioner</p>
            </div>
+        </div>
+      </section>
+
+      {/* Future Outlook 2026-2027 */}
+      <section className="py-24 bg-surface-container-high border-t border-outline-variant">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-black text-on-surface mb-4">Strategic Horizon: 2026 – 2027</h2>
+            <p className="text-on-surface-variant text-lg max-w-2xl mx-auto">Scaling the success of the pilot into a sustainable, statewide educational standard.</p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { title: "Quality Assurance", desc: "Establishing a statewide framework for continuous instructional monitoring." },
+              { title: "Digital Results", desc: "Transitioning to fully automated student performance tracking." },
+              { title: "Standardization", desc: "Applying infrastructure standards across all 17 LGAs in Abia." },
+              { title: "Global Integration", desc: "Partnering with international bodies for curriculum benchmarking." }
+            ].map((goal, i) => (
+              <div key={i} className="bg-white p-8 rounded-3xl border border-outline-variant hover:border-primary transition-all group">
+                <div className="text-primary font-black mb-4">Goal 0{i + 1}</div>
+                <h4 className="text-xl font-bold text-on-surface mb-3 group-hover:text-primary transition-colors">{goal.title}</h4>
+                <p className="text-on-surface-variant text-sm leading-relaxed">{goal.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     </div>

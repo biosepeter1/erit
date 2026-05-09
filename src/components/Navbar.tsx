@@ -31,11 +31,11 @@ export default function Navbar() {
       <nav className="flex justify-between items-center w-full px-6 h-20 max-w-7xl mx-auto">
         <div className="flex items-center">
           <Link href="https://eriteam.org" target="_blank" rel="noopener noreferrer" className="font-h2 text-2xl font-bold text-primary flex items-center gap-3">
-            <Image 
-              src="/pdf_images/page_1_img_4.jpeg" 
-              alt="AbiaFIRST Logo" 
-              width={40} 
-              height={40} 
+            <Image
+              src="/pdf_images/page_1_img_4.jpeg"
+              alt="AbiaFIRST Logo"
+              width={40}
+              height={40}
               className="object-contain shrink-0"
               style={{ width: '40px', height: 'auto' }}
             />
@@ -75,7 +75,7 @@ export default function Navbar() {
           >
             Get Involved
           </a>
-          <button 
+          <button
             className="md:hidden p-2 text-on-surface-variant hover:text-primary transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >

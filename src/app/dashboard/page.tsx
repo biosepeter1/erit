@@ -123,8 +123,8 @@ export default function Dashboard() {
                         </div>
                         <div className="grid grid-cols-3 gap-6">
                           <div><div className="text-2xl font-black text-primary">7,454</div><div className="text-[9px] font-black uppercase tracking-widest text-on-surface-variant opacity-90">Educators</div></div>
-                          <div><div className="text-2xl font-black text-secondary">235</div><div className="text-[9px] font-black uppercase tracking-widest text-on-surface-variant opacity-90">Schools</div></div>
-                          <div><div className="text-2xl font-black text-on-surface">31.6k</div><div className="text-[9px] font-black uppercase tracking-widest text-on-surface-variant opacity-90">Students</div></div>
+                          <div><div className="text-2xl font-black text-secondary">149</div><div className="text-[9px] font-black uppercase tracking-widest text-on-surface-variant opacity-90">Schools</div></div>
+                          <div><div className="text-2xl font-black text-on-surface">40k+</div><div className="text-[9px] font-black uppercase tracking-widest text-on-surface-variant opacity-90">Students</div></div>
                         </div>
                         <div className="pt-8 flex flex-col sm:flex-row gap-4">
                           <button onClick={() => setViewMode("details")} className="w-full sm:w-auto px-8 py-4 md:py-5 bg-[#a43700] text-white rounded-2xl font-black uppercase tracking-widest text-xs flex items-center justify-center gap-3 hover:scale-105 transition-all shadow-lg shadow-primary/20">
@@ -148,11 +148,11 @@ export default function Dashboard() {
                 <div className="bg-white rounded-xl p-5 md:p-6 shadow-sm border-t-4 border-secondary relative overflow-hidden group hover:shadow-md transition-shadow">
                   <div className="flex justify-between items-start mb-4">
                     <div className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant/60">Resources Ready</div>
-                    <span className="px-2 py-0.5 bg-secondary/10 text-secondary text-[10px] font-bold rounded-md">72% done</span>
+                    <span className="px-2 py-0.5 bg-secondary/10 text-secondary text-[10px] font-bold rounded-md">100% complete</span>
                   </div>
                   <div className="text-3xl md:text-4xl font-black text-on-surface mb-2">{metrics.overview.totalResources.toLocaleString()}</div>
                   <div className="h-1 bg-surface-container-high rounded-full overflow-hidden">
-                    <div className="h-full bg-secondary" style={{ width: '72%', backgroundColor: '#1b6d24' }} />
+                    <div className="h-full bg-secondary" style={{ width: '100%', backgroundColor: '#1b6d24' }} />
                   </div>
                 </div>
 
@@ -508,10 +508,10 @@ export default function Dashboard() {
                       <div>
                         <div className="text-[10px] font-black uppercase tracking-[0.3em] mb-4 text-secondary">Academic Milestone</div>
                         <h2 className="text-4xl font-black leading-tight text-on-surface mb-6">Digital Curriculum: <br/>The New Standard</h2>
-                        <p className="text-on-surface-variant font-medium text-lg leading-relaxed mb-10">Digitized the entire state curriculum, producing 28,062 instructional assets.</p>
+                        <p className="text-on-surface-variant font-medium text-lg leading-relaxed mb-10">Digitized the entire state curriculum, producing 41,163 instructional assets.</p>
                         <div className="grid grid-cols-2 gap-8 mb-10">
-                          <div><div className="text-3xl font-black text-secondary">72%</div><div className="text-[10px] font-black uppercase tracking-widest opacity-90">Efficiency</div></div>
-                          <div><div className="text-3xl font-black text-on-surface">28,062</div><div className="text-[10px] font-black uppercase tracking-widest opacity-90">Assets</div></div>
+                          <div><div className="text-3xl font-black text-secondary">97.1%</div><div className="text-[10px] font-black uppercase tracking-widest opacity-90">Success</div></div>
+                          <div><div className="text-3xl font-black text-on-surface">41,163</div><div className="text-[10px] font-black uppercase tracking-widest opacity-90">Assets</div></div>
                         </div>
                         <button onClick={() => setViewMode("details")} className="px-8 py-5 bg-[#1b6d24] text-white rounded-2xl font-black uppercase tracking-widest text-xs flex items-center justify-center gap-3 hover:scale-105 transition-all shadow-lg shadow-secondary/20">
                           Explore Production Metrics <ArrowRight size={18} />
@@ -949,7 +949,7 @@ export default function Dashboard() {
                         <h2 className="text-4xl font-black leading-tight text-on-surface mb-6">Rigorous Field <br/>Verification</h2>
                         <p className="text-on-surface-variant font-medium text-lg leading-relaxed mb-10">Deploying field teams across 8 LGAs to verify digital adoption and instructional quality.</p>
                         <div className="grid grid-cols-3 gap-6 mb-10">
-                          <div><div className="text-2xl font-black text-primary">112</div><div className="text-[9px] font-black uppercase tracking-widest opacity-90">Visits</div></div>
+                          <div><div className="text-2xl font-black text-primary">149</div><div className="text-[9px] font-black uppercase tracking-widest opacity-90">Visits</div></div>
                           <div><div className="text-2xl font-black text-secondary">90.3%</div><div className="text-[9px] font-black uppercase tracking-widest opacity-90">Attendance</div></div>
                           <div><div className="text-2xl font-black text-on-surface">8</div><div className="text-[9px] font-black uppercase tracking-widest opacity-90">LGAs</div></div>
                         </div>
@@ -987,8 +987,8 @@ export default function Dashboard() {
                 </div>
                 <div className="bg-primary text-white rounded-2xl p-6 shadow-lg" style={{ backgroundColor: '#a43700' }}>
                   <div className="text-xs font-black uppercase tracking-widest mb-2 opacity-80">School Coverage</div>
-                  <div className="text-4xl font-black">7.7%</div>
-                  <div className="text-xs font-bold mt-1 opacity-80">112 of 1,461 Schools</div>
+                  <div className="text-4xl font-black">10.2%</div>
+                  <div className="text-xs font-bold mt-1 opacity-80">149 of 1,461 Schools</div>
                 </div>
               </div>
 
@@ -1059,7 +1059,7 @@ export default function Dashboard() {
                     <div className="flex gap-12 mt-8">
                       <div>
                         <div className="text-xs font-black uppercase tracking-widest opacity-90 mb-1">Total Coverage</div>
-                        <div className="text-3xl font-black text-secondary">112 Schools</div>
+                        <div className="text-3xl font-black text-secondary">149 Schools</div>
                       </div>
                       <div>
                         <div className="text-xs font-black uppercase tracking-widest opacity-90 mb-1">Staff Attendance</div>
@@ -1082,10 +1082,10 @@ export default function Dashboard() {
                 <div className="p-6 md:p-10 flex flex-col justify-center flex-1">
                   <div className="flex items-center gap-3 mb-4">
                     <span className="px-2 py-0.5 bg-orange-100 text-orange-700 text-[10px] font-black uppercase tracking-widest rounded">Field Reach</span>
-                    <span className="text-[10px] font-bold text-on-surface-variant/75 uppercase tracking-widest">• H1 2024 Report</span>
+                    <span className="text-[10px] font-bold text-on-surface-variant/75 uppercase tracking-widest">• 2024 - 2026 REPORT</span>
                   </div>
                   <h3 className="text-3xl font-black text-on-surface leading-tight mb-4">
-                    State-wide Field Monitoring Reach Expands to 112 Primary Schools
+                    State-wide Field Monitoring Reach Expands to 149 Primary Schools
                   </h3>
                   <p className="text-on-surface-variant font-medium leading-relaxed mb-8 max-w-2xl">
                     Our field teams have successfully verified digital transformation adoption across 8 LGAs, recording a consistent 90.3% staff attendance rate during the Q2 validation cycle.
@@ -1407,7 +1407,7 @@ export default function Dashboard() {
                 <div className="prose prose-slate max-w-none">
                   <h3 className="text-2xl font-black text-on-surface mb-6">Executive Summary</h3>
                   <p className="text-on-surface-variant font-medium leading-relaxed mb-8">
-                    The AbiaFIRST transformation program has achieved its pilot objectives. As of March 2026, the programme successfully scaled from 30 to 235 school visits, reaching over 7,000 educators across 8 priority LGAs.
+                    The AbiaFIRST transformation program has achieved its pilot objectives. As of March 2026, the programme successfully scaled from 30 to 149 school visits, reaching over 7,000 educators across 8 priority LGAs.
                   </p>
 
                   <div className="grid grid-cols-2 gap-8 mb-12">
@@ -1416,7 +1416,7 @@ export default function Dashboard() {
                       <div className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant">Trainers Certified</div>
                     </div>
                     <div className="p-6 bg-surface-container-low rounded-2xl border border-outline-variant/30">
-                      <div className="text-3xl font-black text-secondary mb-1">235</div>
+                      <div className="text-3xl font-black text-secondary mb-1">149</div>
                       <div className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant">Schools Visited</div>
                     </div>
                   </div>
@@ -1485,11 +1485,11 @@ export default function Dashboard() {
                 <div className="space-y-4 md:space-y-6 mt-6 md:mt-0">
                   <div>
                     <div className="text-[10px] font-black uppercase tracking-widest opacity-90 mb-1">Total Assets</div>
-                    <div className="text-lg md:text-xl font-bold">28,062 / 38,833</div>
+                    <div className="text-lg md:text-xl font-bold">41,163</div>
                   </div>
                   <div>
-                    <div className="text-[10px] font-black uppercase tracking-widest opacity-90 mb-1">Efficiency</div>
-                    <div className="text-lg md:text-xl font-bold">72% Completed</div>
+                    <div className="text-[10px] font-black uppercase tracking-widest opacity-90 mb-1">Implementation</div>
+                    <div className="text-lg md:text-xl font-bold">97.1% Success</div>
                   </div>
                 </div>
               </div>
@@ -1588,7 +1588,7 @@ export default function Dashboard() {
 
               <div className="md:w-1/3 bg-primary p-6 md:p-10 text-white flex flex-col justify-between shrink-0" style={{ backgroundColor: '#a43700' }}>
                 <div>
-                  <div className="px-3 py-1 bg-white/20 rounded-lg text-[10px] font-black uppercase tracking-widest inline-block mb-4 md:mb-6">H1 2024 Report</div>
+                  <div className="px-3 py-1 bg-white/20 rounded-lg text-[10px] font-black uppercase tracking-widest inline-block mb-4 md:mb-6">2024 - 2026 Report</div>
                   <h2 className="text-2xl md:text-4xl font-black leading-tight mb-4">Field Reach Analysis</h2>
                   <p className="text-white/70 font-medium leading-relaxed text-sm md:text-base">
                     Monitoring the transformation of Abia's educational ecosystem through on-site verification.
@@ -1597,7 +1597,7 @@ export default function Dashboard() {
                 <div className="space-y-4 md:space-y-6 mt-6 md:mt-0">
                   <div>
                     <div className="text-[10px] font-black uppercase tracking-widest opacity-90 mb-1">Total Visits</div>
-                    <div className="text-lg md:text-xl font-bold">112 Verified Sessions</div>
+                    <div className="text-lg md:text-xl font-bold">149 Verified Sessions</div>
                   </div>
                   <div>
                     <div className="text-[10px] font-black uppercase tracking-widest opacity-90 mb-1">Impact</div>
@@ -1610,20 +1610,20 @@ export default function Dashboard() {
                 <div className="prose prose-slate max-w-none">
                   <h3 className="text-2xl font-black text-on-surface mb-6">Monitoring Performance</h3>
                   <p className="text-on-surface-variant font-medium leading-relaxed mb-8">
-                    Field monitoring activity saw a significant peak in June 2024, driven by Term 3 validation visits and the introduction of School Improvement Plans (SIP).
+                    Field monitoring activity saw a significant peak in June 2024, followed by a further 110% velocity increase between October 2025 and March 2026 as the program scaled across 8 priority LGAs.
                   </p>
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
                     <div className="p-4 bg-orange-50 border border-orange-100 rounded-xl">
-                      <div className="text-2xl font-black text-orange-700">42</div>
+                      <div className="text-2xl font-black text-orange-700">{metrics.monitoring.visitBreakdown.joint}</div>
                       <div className="text-[10px] font-bold text-orange-600 uppercase">Joint Visits</div>
                     </div>
                     <div className="p-4 bg-green-50 border border-green-100 rounded-xl">
-                      <div className="text-2xl font-black text-green-700">54</div>
+                      <div className="text-2xl font-black text-green-700">{metrics.monitoring.visitBreakdown.validation}</div>
                       <div className="text-[10px] font-bold text-green-600 uppercase">Validation</div>
                     </div>
                     <div className="p-4 bg-blue-50 border border-blue-100 rounded-xl">
-                      <div className="text-2xl font-black text-blue-700">16</div>
+                      <div className="text-2xl font-black text-blue-700">{metrics.monitoring.visitBreakdown.sip}</div>
                       <div className="text-[10px] font-bold text-blue-600 uppercase">SIP Visits</div>
                     </div>
                   </div>
@@ -1704,7 +1704,7 @@ export default function Dashboard() {
                 <div className="prose prose-slate max-w-none">
                   <h3 className="text-2xl font-black text-on-surface mb-6">Trainer Growth & Deployment</h3>
                   <p className="text-on-surface-variant font-medium leading-relaxed mb-8">
-                    The March 2026 milestone reflects a significant scale-up in specialized human capital, supporting the state-wide rollout of the digital curriculum in 235 verified schools.
+                    The March 2026 milestone reflects a significant scale-up in specialized human capital, supporting the state-wide rollout of the digital curriculum in 149 verified schools.
                   </p>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">

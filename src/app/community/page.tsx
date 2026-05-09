@@ -93,17 +93,37 @@ export default function CommunityPage() {
             <div className="flex flex-col sm:flex-row gap-4 md:gap-8 items-center bg-white p-5 md:p-6 rounded-2xl border border-outline-variant shadow-xl">
               <div className="text-center px-4 md:px-6 sm:border-r border-b sm:border-b-0 border-outline-variant pb-4 sm:pb-0 w-full sm:w-auto">
                 <div className="text-4xl md:text-5xl font-extrabold text-primary">8</div>
-                <div className="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mt-1">LGAs TRANSFORMED</div>
+                <div className="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mt-1">LGAs REACHED (2026)</div>
+              </div>
+              <div className="text-center px-4 md:px-6 sm:border-x border-y sm:border-y-0 border-outline-variant py-4 sm:py-0 w-full sm:w-auto">
+                <div className="text-4xl md:text-5xl font-extrabold text-secondary">149</div>
+                <div className="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mt-1">SCHOOLS VERIFIED</div>
               </div>
               <div className="text-center px-4 md:px-6 w-full sm:w-auto">
-                <div className="text-4xl md:text-5xl font-extrabold text-secondary">150+</div>
-                <div className="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mt-1">SCHOOLS UPGRADED</div>
+                <div className="text-4xl md:text-5xl font-extrabold text-on-surface">40k+</div>
+                <div className="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mt-1">STUDENTS IMPACTED</div>
               </div>
             </div>
           </div>
 
+          {/* Community Milestones 2025-2026 */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-16">
+            {[
+              { year: "2025", title: "Scale-up Launch", desc: "Statewide expansion of teacher support systems." },
+              { year: "2025", title: "Digital Hubs", desc: "Deployment of digital platform across 8 pilot LGAs." },
+              { year: "2026", title: "Statewide Rollout", desc: "Full implementation of cascade training models." },
+              { year: "2026", title: "149 Schools", desc: "Verified adoption of learner-centred pedagogy." }
+            ].map((m, i) => (
+              <div key={i} className="bg-white/50 backdrop-blur-sm border border-outline-variant p-6 rounded-2xl hover:bg-white transition-all group">
+                <div className="text-primary font-black text-xl mb-2">{m.year}</div>
+                <h4 className="font-bold text-on-surface mb-2 group-hover:text-primary transition-colors">{m.title}</h4>
+                <p className="text-sm text-on-surface-variant leading-relaxed">{m.desc}</p>
+              </div>
+            ))}
+          </div>
+
           <div className="grid grid-cols-12 gap-6 md:gap-8">
-            <div className="col-span-12 md:col-span-8 bg-white border border-outline-variant rounded-2xl overflow-hidden relative min-h-[300px] md:min-h-[500px] shadow-sm group">
+            <div className="col-span-12 bg-white border border-outline-variant rounded-2xl overflow-hidden relative min-h-[300px] md:min-h-[500px] shadow-sm group">
               <div className="absolute top-6 left-6 z-10 bg-white/95 backdrop-blur-md p-6 rounded-xl border border-outline-variant shadow-xl max-w-xs">
                 <h3 className="font-bold text-primary mb-2 flex items-center gap-2">
                   <MapPin size={18} /> Regional Progress Map
@@ -114,26 +134,9 @@ export default function CommunityPage() {
                 src="/pdf_images/page_6_img_1.jpeg"
                 alt="Regional Progress Map"
                 fill
-                sizes="(max-width: 768px) 100vw, 66vw"
+                sizes="(max-width: 768px) 100vw, 100vw"
                 className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
               />
-            </div>
-
-            <div className="col-span-12 md:col-span-4 flex flex-col gap-8">
-              <div className="bg-white border border-outline-variant rounded-2xl p-8 shadow-sm border-l-8 border-l-secondary flex-1 hover:shadow-lg transition-all">
-                <div className="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center text-secondary mb-6">
-                  <Handshake size={24} />
-                </div>
-                <h3 className="text-2xl font-bold mb-4">The Farm Produce Program</h3>
-                <p className="text-on-surface-variant mb-6 leading-relaxed">In Aba South, students are learning agricultural science through direct application. The community donated seeds and tools.</p>
-              </div>
-              <div className="bg-white border border-outline-variant rounded-2xl p-8 shadow-sm border-l-8 border-l-primary flex-1 hover:shadow-lg transition-all">
-                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-6">
-                  <Package size={24} />
-                </div>
-                <h3 className="text-2xl font-bold mb-4">Infrastructure Milestone</h3>
-                <p className="text-on-surface-variant mb-6 leading-relaxed">Umuahia North successfully renovated 12 classrooms through the combined effort of the SBMC and local trade unions.</p>
-              </div>
             </div>
           </div>
         </section>
@@ -150,13 +153,14 @@ export default function CommunityPage() {
               </div>
            </div>
 
-           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
               {/* Testimonial 1 */}
               <motion.div 
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="bg-[#1b6d24] text-white p-8 md:p-10 rounded-[2.5rem] shadow-xl relative overflow-hidden group"
+                className="text-white p-8 md:p-10 rounded-[2.5rem] shadow-xl relative overflow-hidden group"
+                style={{ backgroundColor: "#1b6d24" }}
               >
                  <div className="relative z-10">
                     <div className="flex items-center gap-4 mb-6">
@@ -182,7 +186,8 @@ export default function CommunityPage() {
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="bg-[#a43700] text-white p-8 md:p-10 rounded-[2.5rem] shadow-xl relative overflow-hidden group"
+                className="text-white p-8 md:p-10 rounded-[2.5rem] shadow-xl relative overflow-hidden group"
+                style={{ backgroundColor: "#a43700" }}
               >
                  <div className="relative z-10">
                     <div className="flex items-center gap-4 mb-6">
@@ -202,14 +207,96 @@ export default function CommunityPage() {
                     <BookOpen size={200} />
                  </div>
               </motion.div>
-           </div>
+
+              {/* New Testimonial 3 (from screenshot) */}
+              <motion.div 
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="text-white p-8 md:p-10 rounded-[2.5rem] shadow-xl relative overflow-hidden group"
+                style={{ backgroundColor: "#008a34" }}
+              >
+                 <div className="relative z-10">
+                    <div className="flex items-center gap-4 mb-6">
+                       <div className="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center font-black text-2xl border-2 border-white/30 uppercase shrink-0">
+                          JA
+                       </div>
+                       <div>
+                          <h4 className="text-xl font-bold">Mrs. Josiah Glory Azubuike</h4>
+                          <p className="text-white/70 text-[10px] font-black uppercase tracking-widest">Primary School Teacher in Ohafia</p>
+                       </div>
+                    </div>
+                    <p className="text-base md:text-lg font-medium leading-relaxed italic">
+                      "I am so happy about all the training that I have received from the ERIT team. Now, when I teach, I try to use resources. When I taught Farm Produce in Agricultural Science, I took rice, garri, beans and other items to the class. This made my pupils very excited. The lesson was practical and they answered so many questions. I even used bottle tops and sticks for teaching addition and subtraction. I thank Governor Otti for making this happen."
+                    </p>
+                 </div>
+                 <div className="absolute -right-10 -bottom-10 opacity-10 group-hover:scale-110 transition-transform duration-700">
+                    <Users size={200} />
+                 </div>
+              </motion.div>
+
+              {/* New Testimonial 4 (from screenshot) */}
+              <motion.div 
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="text-white p-8 md:p-10 rounded-[2.5rem] shadow-xl relative overflow-hidden group"
+                style={{ backgroundColor: "#0038a8" }}
+              >
+                 <div className="relative z-10">
+                    <div className="flex items-center gap-4 mb-6">
+                       <div className="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center font-black text-2xl border-2 border-white/30 uppercase shrink-0">
+                          GN
+                       </div>
+                       <div>
+                          <h4 className="text-xl font-bold">Mrs. Gabriella Nwankwo</h4>
+                          <p className="text-white/70 text-[10px] font-black uppercase tracking-widest">Umuwaya Road Primary</p>
+                       </div>
+                    </div>
+                    <p className="text-lg md:text-xl font-medium leading-relaxed italic">
+                      "AbiaFIRST has equipped me to focus on what my pupils can do and guide them to improve. I am grateful for this initiative and hope for more training and a better teaching environment in the future."
+                    </p>
+                 </div>
+                 <div className="absolute -right-10 -bottom-10 opacity-10 group-hover:scale-110 transition-transform duration-700">
+                    <Quote size={200} />
+                 </div>
+              </motion.div>
+
+              {/* New Testimonial 5 (from screenshot) */}
+              <motion.div 
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="text-white p-8 md:p-10 rounded-[2.5rem] shadow-xl relative overflow-hidden group lg:col-span-2"
+                style={{ backgroundColor: "#005a32" }}
+              >
+                 <div className="relative z-10">
+                    <div className="flex items-center gap-4 mb-6">
+                       <div className="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center font-black text-2xl border-2 border-white/30 uppercase shrink-0">
+                          EK
+                       </div>
+                       <div>
+                          <h4 className="text-xl font-bold">Mrs. Eme Kalu</h4>
+                          <p className="text-white/70 text-[10px] font-black uppercase tracking-widest">Abia State Educator</p>
+                       </div>
+                    </div>
+                    <p className="text-xl md:text-2xl font-medium leading-relaxed italic">
+                      "The training has helped me a lot. My pupils in Primary 5, really like making things with cardboard. They have made decorations for the wall and mats as well."
+                    </p>
+                 </div>
+                 <div className="absolute -right-10 -bottom-10 opacity-10 group-hover:scale-110 transition-transform duration-700">
+                    <Package size={200} />
+                 </div>
+              </motion.div>
+            </div>
 
            {/* Large Featured Story */}
            <motion.div 
              initial={{ opacity: 0, y: 20 }}
              whileInView={{ opacity: 1, y: 0 }}
              viewport={{ once: true }}
-             className="bg-[#4d2c8d] text-white p-8 md:p-12 rounded-[3rem] shadow-2xl relative overflow-hidden"
+             className="text-white p-8 md:p-12 rounded-[3rem] shadow-2xl relative overflow-hidden"
+             style={{ backgroundColor: "#4d2c8d" }}
            >
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12 items-center relative z-10">
                  <div className="lg:col-span-1">

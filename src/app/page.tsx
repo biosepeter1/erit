@@ -77,6 +77,14 @@ export default function MandatePage() {
         { q: "Q3", title: "Deployment", desc: "Digital platform deployment" },
         { q: "Q4", title: "Assessment", desc: "Impact assessment and evaluation" }
       ]
+    },
+    {
+      year: "2026", quarters: [
+        { q: "Q1", title: "Scale", desc: "Statewide cascade training rollout" },
+        { q: "Q2", title: "Digital", desc: "Full LMS implementation & 149 School visits" },
+        { q: "Q3", title: "Policy", desc: "Integration with state education policy" },
+        { q: "Q4", title: "Future", desc: "Transition to 2027 strategic goals" }
+      ]
     }
   ];
 
@@ -84,10 +92,11 @@ export default function MandatePage() {
     { val: "7,454", label: "Educators trained", icon: Users2, trend: null },
     { val: "2,200", label: "Master & Lead Trainers", icon: Award, trend: null },
     { val: "97.1%", label: "Skill application", icon: CheckCircle2, trend: "scroll into view" },
-    { val: "71.5%", label: "Teacher mastery levels", icon: TrendingUp, trend: "from 31.7%" },
+    { val: "71.5%", label: "Teacher mastery levels", icon: TrendingUp, trend: "from 31.1%" },
     { val: "8.9%", label: "Low performers", icon: Zap, trend: "from 39.9%" },
     { val: "69.8%", label: "Improved interactions", icon: Layout, trend: null },
-    { val: "74.2%", label: "Overall performance", icon: Globe, trend: "from 55.2%" },
+    { val: "74.2%", label: "Overall performance", icon: Globe, trend: "from 53.2%" },
+    { val: "41%", label: "Learning Gain", icon: Zap, trend: "Average improvement" },
   ];
 
   return (
@@ -137,7 +146,7 @@ export default function MandatePage() {
                   <Calendar className="text-[#c29858]" size={18} />
                   <div>
                     <p className="text-[10px] font-black uppercase tracking-widest opacity-40">Period Under Review</p>
-                    <p className="text-xs font-bold text-white">2024 — 2025</p>
+                    <p className="text-xs font-bold text-white">2024 — 2026</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
@@ -352,7 +361,7 @@ export default function MandatePage() {
           
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-2">
-              <Image src="/pdf_images/page_1_img_5.png" alt="ERIT" width={32} height={32} className="opacity-80" />
+              <Image src="/icon.png" alt="ERIT" width={32} height={32} className="opacity-80 rounded-full" />
               <span className="font-black text-sm text-on-surface tracking-widest">ERIT</span>
             </div>
           </div>
