@@ -43,18 +43,21 @@ export default function PartnershipsPage() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="h-full w-full relative hidden lg:block"
+            className="w-full relative flex items-center justify-center p-6 md:p-12"
           >
-            <Image
-              src="/pdf_images/page_1_img_1_new.png"
-              alt="Educational Technology Partnership"
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
+            <div className="w-full max-w-[550px] rounded-3xl overflow-hidden shadow-2xl border border-outline-variant/30 bg-white">
+              <Image
+                src="/pdf_images/page_1_img_1_new.png"
+                alt="Educational Technology Partnership"
+                width={550}
+                height={412}
+                className="w-full h-auto object-cover"
+                priority
+              />
+            </div>
           </motion.div>
         </div>
       </section>
