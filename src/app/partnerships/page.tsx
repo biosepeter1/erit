@@ -49,7 +49,7 @@ export default function PartnershipsPage() {
             className="h-full w-full relative hidden lg:block"
           >
             <Image
-              src="/pdf_images/page_1_img_1.jpeg"
+              src="/pdf_images/page_1_img_1_new.png"
               alt="Educational Technology Partnership"
               fill
               className="object-cover"
